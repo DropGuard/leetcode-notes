@@ -1,3 +1,5 @@
+一旦头节点可能删除，就使用dummy node
+
 #### 725. Split Linked List in Parts
 
 java

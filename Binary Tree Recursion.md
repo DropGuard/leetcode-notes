@@ -35,7 +35,7 @@ func dfs(root *TreeNode, res *[]int) {
 }
 ```
 
-no recursion
+no recursion 手动模拟栈
 
 Go
 
