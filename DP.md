@@ -1,6 +1,6 @@
 动态规划就是缓存中间结果来加速计算，对计算顺序有严格的要求
 
-本文中收录的题目都是有严格位置依赖的，也就是画表格填数，毫无语法难度
+题目往往有严格位置依赖，解法是画表格填数，毫无语法难度
 
 #### [1162. As Far from Land as Possible](https://leetcode.com/problems/as-far-from-land-as-possible/)
 
