@@ -11,10 +11,9 @@ class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         res = []
         full_mask = (1 << n) - 1
+        path = []
 
-        # path 记录每一行皇后所在的列索引
-        def backtrack(path: List[int],
-                      col_mask: int, diag_left: int, diag_right: int):
+        def backtrack(col_mask: int, diag_left: int, diag_right: int):
             if col_mask == full_mask:
                 res.append(['.' * i + 'Q' + '.' * (n - i - 1) for i in path])
                 return
@@ -27,13 +26,12 @@ class Solution:
                 col_idx = low_bit.bit_length() - 1
 
                 path.append(col_idx)
-                backtrack(path,
-                          col_mask | low_bit,
+                backtrack(col_mask | low_bit,
                           (diag_left | low_bit) << 1,
                           (diag_right | low_bit) >> 1)
                 path.pop()
 
-        backtrack([], 0, 0, 0)
+        backtrack(0, 0, 0)
         return res
 ```
 
