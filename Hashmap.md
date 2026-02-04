@@ -17,12 +17,6 @@ func longestSubsequence(arr []int, difference int) int {
 	}
 	return res
 }
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 ```
 
 java
@@ -169,9 +163,9 @@ class Solution {
 rust
 
 ```rust
+use std::collections::HashMap;
 impl Solution {
 	fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-	    use std::collections::HashMap;
 	    let mut map: HashMap<i32, i32> = HashMap::new();
 	    for (i, &v) in nums.iter().enumerate() {
 	        let i = i as i32;
@@ -246,10 +240,9 @@ impl Solution {
             });
             map.entry(key).or_default().push(s);
         }
-        map.into_values().collect() // 直接移动出的 vec
+        map.into_values().collect()
     }
 }
-
 ```
 
 #### 187. Repeated DNA Sequences

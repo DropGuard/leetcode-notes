@@ -53,9 +53,9 @@ func quickSelect(nums []int, l, r, k int) int {
 func partition(nums []int, l, r int) int {
     // 随机选取 pivot 并交换到头部
     pivotIdx := l + rand.Intn(r-l)
+    pivotVal := nums[pivotIdx]
     // Move to Head
     nums[l], nums[pivotIdx] = nums[pivotIdx], nums[l]
-    pivotVal := nums[l]
     
     i, j := l+1, r-1
     for {
@@ -103,9 +103,9 @@ class Solution:
     def partition(self, nums: List[int], l: int, r: int) -> int:
         # 随机选取 pivot 并交换到头部
         pivot_idx = random.randint(l, r - 1)
+        pivot_val = nums[pivot_idx]
         # Move to Head
         nums[l], nums[pivot_idx] = nums[pivot_idx], nums[l]
-        pivot_val = nums[l]
         
         i, j = l + 1, r - 1
         while True:
@@ -155,9 +155,9 @@ impl Solution {
     fn partition(arr: &mut [i32], l: usize, r: usize) -> usize {
         // 随机选取 pivot 并交换到头部
         let pivot_index = rand::random_range(l..r); 
+        let pivot_value = arr[pivot_index];
         // Move to Head
         arr.swap(l, pivot_index);
-        let pivot_value = arr[l];
         
         let mut i = l + 1;
         let mut j = r - 1;
@@ -206,9 +206,9 @@ public class Solution {
     }    private int partition(int[] nums, int l, int r) {
         // 随机选取 pivot 并交换到头部
         int pivotIdx = l + ThreadLocalRandom.current().nextInt(r - l);
+        int pivotVal = nums[pivotIdx];
         // Move to Head
         swap(nums, l, pivotIdx);
-        int pivotVal = nums[l];
         
         int i = l + 1, j = r - 1;
         while (true) {
@@ -280,9 +280,9 @@ func insertionSort(nums []int, l, r int) {
 func partition(nums []int, l, r int) int {
 	// 随机选取 pivot 并交换到头部
 	pivotIdx := l + rand.Intn(r-l)
+	pivotVal := nums[pivotIdx]
 	// Move to Head
 	nums[l], nums[pivotIdx] = nums[pivotIdx], nums[l]
-	pivotVal := nums[l]
 
 	i, j := l+1, r-1
 	for {
@@ -341,9 +341,9 @@ class Solution:
     def partition(self, nums: List[int], l: int, r: int) -> int:
         # 随机选取 pivot 并交换到头部
         pivot_idx = random.randint(l, r - 1)
+        pivot_val = nums[pivot_idx]
         # Move to Head
         nums[l], nums[pivot_idx] = nums[pivot_idx], nums[l]
-        pivot_val = nums[l]
         
         i, j = l + 1, r - 1
         while True:
@@ -406,9 +406,9 @@ impl Solution {
         let len = arr.len();
         // 随机选取 pivot 并交换到头部
         let pivot_index = rand::random_range(0..len); 
+        let pivot_value = arr[pivot_index];
         // Move to Head
         arr.swap(0, pivot_index);
-        let pivot_value = arr[0];
         
         let mut i = 1;
         let mut j = len - 1;
@@ -472,9 +472,9 @@ public class Solution {
     private int partition(int[] nums, int l, int r) {
         // 随机选取 pivot 并交换到头部
         int pivotIdx = l + ThreadLocalRandom.current().nextInt(r - l);
+        int pivotVal = nums[pivotIdx];
         // Move to Head
         swap(nums, l, pivotIdx);
-        int pivotVal = nums[l];
         
         int i = l + 1, j = r - 1;
         while (true) {
@@ -490,87 +490,6 @@ public class Solution {
         // 将 pivot 放到最终位置 j
         swap(nums, l, j);
         return j;
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-}
-```
-java示例
-```java
-/**
- * Single-threaded QuickSort implementation using Dual-Way Partitioning.
- * <p>
- * Design choices:
- * 1. Left-closed, Right-open intervals for standard compliance.
- * 2. Randomized Pivot placed at Head (l) to guarantee partition invariant.
- * 3. Dual-Way scanning to handle duplicate elements efficiently (avoiding O(N^2) on all-equal arrays).
- */
-class QuickSort implements Sorter {
-
-    private static final int INSERTION_THRESHOLD = 47;
-    private final Random random = new Random();
-
-    @Override
-    public void sort(int[] nums) {
-        if (nums == null || nums.length < 2) return;
-        quickSort(nums, 0, nums.length);
-    }
-
-    private void quickSort(int[] nums, int l, int r) {
-        if (r - l <= INSERTION_THRESHOLD) {
-            insertionSort(nums, l, r);
-            return;
-        }
-        // last index in the left half
-        int j = partition(nums, l, r);
-
-        quickSort(nums, l, j);
-        quickSort(nums, j + 1, r);
-    }
-
-    private int partition(int[] nums, int l, int r) {
-        // Random Selection: Avoid worst-case on sorted arrays
-        int pivotIdx = l + random.nextInt(r - l);
-        // Pivot Value
-        int pivot = nums[pivotIdx];
-        // Move to Head
-        swap(nums, l, pivotIdx);
-        // l is the pivot
-        int i = l + 1;
-        int j = r - 1;
-        while (true) {
-            while (i <= j && nums[i] < pivot) {
-                i++;
-            }
-            while (i <= j && nums[j] > pivot) {
-                j--;
-            }
-            if (i >= j) {
-                break;
-            }
-            swap(nums, i, j);
-            i++;
-            j--;
-        }
-        // j stopped at a value <= pivot.
-        swap(nums, l, j);
-        return j;
-    }
-
-    private void insertionSort(int[] nums, int l, int r) {
-        for (int i = l + 1; i < r; i++) {
-            int key = nums[i];
-            int j = i;
-            while (j > l && nums[j - 1] > key) {
-                nums[j] = nums[j - 1];
-                j--;
-            }
-            nums[j] = key;
-        }
     }
 
     private void swap(int[] nums, int i, int j) {
