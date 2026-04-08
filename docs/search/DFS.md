@@ -357,7 +357,7 @@ use std::rc::Rc;
 impl Solution {
     pub fn word_break(s: String, word_dict: Vec<String>) -> Vec<String> {
         let set: HashSet<String> = word_dict.into_iter().collect();
-        // 优化点 1: Value 类型变为 Rc<Vec<String>>，实现共享所有权
+        // Optimization 1: Change Value type to Rc<Vec<String>> to implement shared ownership
         let mut memo: HashMap<usize, Rc<Vec<String>>> = HashMap::new();
         memo.insert(s.len(), Rc::new(vec!["".to_string()]));
         let result_rc = Self::dfs(&s, 0, &set, &mut memo);
@@ -365,7 +365,7 @@ impl Solution {
         Rc::try_unwrap(result_rc).unwrap_or_else(|rc| (*rc).clone())
     }
 
-    // 返回值改为 Rc<Vec<String>>
+    // Change return type to Rc<Vec<String>>
     fn dfs(
         s: &str,
         i: usize,
@@ -373,7 +373,7 @@ impl Solution {
         memo: &mut HashMap<usize, Rc<Vec<String>>>,
     ) -> Rc<Vec<String>> {
         if let Some(v) = memo.get(&i) {
-            // 优化点 2: 这里的 clone 只是增加引用计数，开销极低
+            // Optimization 2: Cloning here only increases the reference count, which has extremely low overhead
             return Rc::clone(v);
         }
         let mut result = vec![];
@@ -383,7 +383,7 @@ impl Solution {
                 continue;
             }
             let sub_results = Self::dfs(s, j, set, memo);
-            // 这里依然需要遍历子结果进行拼接，这是算法逻辑决定的
+            // Iterating through sub-results for concatenation is still necessary, as determined by the algorithm logic
             for sub_result in sub_results.iter() {
                 if sub_result.is_empty() {
                     result.push(word.to_string());
@@ -392,7 +392,7 @@ impl Solution {
                 }
             }
         }
-        // 优化点 3: 存入缓存前，包装进 Rc
+        // Optimization 3: Wrap in Rc before storing in cache
         let res_rc = Rc::new(result);
         memo.insert(i, Rc::clone(&res_rc));
         res_rc
@@ -2813,7 +2813,7 @@ impl Solution {
 }
 ```
 
-#### 130. Surrounded Regions
+#### 130. Surrounded Regions
 
 go
 
@@ -2998,11 +2998,11 @@ impl Solution {
 
 #### 207. Course Schedule
 
-有向图中dfs找环
+Find cycles in a directed graph using DFS.
 
-判断DAG
+Check if a graph is a Directed Acyclic Graph (DAG).
 
-每次当前层将该节点涂成unsafe然后递归查找邻居
+In each recursive step, mark the current node as unsafe and then recursively explore its neighbors.
 
 java
 
@@ -3074,7 +3074,7 @@ public class Solution {
 
 #### 310. Minimum Height Trees
 
-在无向无环图中找到图的中点
+Find the center point(s) of an undirected acyclic graph.
 
 java
 
@@ -3135,7 +3135,7 @@ class Solution {
 
 #### 329. Longest Increasing Path in a Matrix
 
-记忆化搜索，命中缓存就直接返回，长度默认填1，DFS寻找四周的高点累加1
+Memoized search: If the value is in the cache, return it directly. Default length is 1. DFS explores neighboring cells with higher values and increments the count.
 
 java
 
@@ -3252,7 +3252,7 @@ impl Solution {
 
 #### 694.Number of Distinct Islands
 
-testing [https://www.lintcode.com/problem/860/description](https://www.lintcode.com/problem/860/description)
+testing [https://www.lintcode.com/problem/860/description](https://www.lintcode.com/problem/860/description)
 
 java
 
@@ -3375,7 +3375,7 @@ class Solution {
 
 #### 785. Is Graph Bipartite?
 
-验证二分图
+Verify bipartite graph
 
 java
 
@@ -3422,7 +3422,7 @@ class Solution:
 
 #### 802. Find Eventual Safe States
 
-标记为unsafe之后递归查找邻居，如果查找到unsafe，就说明成环了，自身也是unsafe，直接return，否则说明自己safe
+After marking as unsafe, recursively explore neighbors. If an unsafe node is found, it indicates a cycle exists, so the current node is also unsafe and we return immediately. Otherwise, the node is safe.
 
 java
 
@@ -3827,7 +3827,7 @@ func isValidSudoku(board [][]byte) bool {
 
 #### 37. Sudoku Solver
 
- / 3  X   3 可以将坐标映射到3 * 3九宫格的左上角
+The `(i / 3) * 3` and `(j / 3) * 3` operations map the current cell's coordinates to the top-left corner of its 3x3 Sudoku subgrid.
 
 ```go
 func solveSudoku(board [][]byte) {

@@ -1,8 +1,8 @@
-如果是01背包，内层循环是倒序，外层循环物品
+For a 0/1 knapsack problem, the inner loop is in reverse order, while the outer loop iterates through items.
 
-完全背包中物品不止使用一次，内层循环变为正序
+In a complete (unbounded) knapsack problem where items can be used more than once, the inner loop changes to forward order.
 
-如果考虑物品的进入顺序，内层循环物品
+If the order of items matters (permutations), the inner loop should iterate through items.
 
 
 
@@ -14,7 +14,7 @@ Output: true
 
 Explanation: The array can be partitioned as [1, 5, 5] and [11].
 
-01背包
+0/1 Knapsack
 
 Go
 
@@ -43,7 +43,7 @@ func canPartition(nums []int) bool {
 
 #### 474. Ones and Zeroes
 
-01背包
+0/1 Knapsack
 
 ```go
 func findMaxForm(strs []string, m int, n int) int {
@@ -73,7 +73,7 @@ func findMaxForm(strs []string, m int, n int) int {
 
 #### 494. Target Sum
 
-01背包
+0/1 Knapsack
 
 ```go
 func findTargetSumWays(nums []int, target int) int {
@@ -108,7 +108,7 @@ func subset(nums []int, target int) int {
 
 #### 322. Coin Change
 
-完全背包
+Complete Knapsack
 
 1D dp
 
@@ -133,7 +133,7 @@ func coinChange(coins []int, amount int) int {
 
 #### 518. Coin Change 2
 
-完全背包
+Complete Knapsack
 
 1D dp
 

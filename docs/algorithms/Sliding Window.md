@@ -140,8 +140,6 @@ impl Solution {
 
 #### 30. Substring with Concatenation of All Words
 
-鍙互灏嗚捣鐐规牴锟?褰撳墠涓嬫爣涓庡崟璇嶉暱搴︾殑鍙栦綑缁撴灉 杩涜鍒嗙被
-
 rust
 
 ```rust
@@ -355,7 +353,7 @@ func minSubArrayLen(target int, nums []int) int {
 }
 ```
 
-#### 220.聽Contains Duplicate III
+#### 220. Contains Duplicate III
 
 go
 
@@ -555,7 +553,7 @@ class Solution:
         return res
 ```
 
-#### 395.聽Longest Substring with At Least K Repeating Characters
+#### 395. Longest Substring with At Least K Repeating Characters
 
 java
 
@@ -653,7 +651,7 @@ func longestSubstring(s string, k int) int {
 }
 ```
 
-#### 424.聽Longest Repeating Character Replacement
+#### 424. Longest Repeating Character Replacement
 
 go
 
@@ -699,8 +697,6 @@ class Solution {
 
 #### 438. Find All Anagrams in a String
 
-涓€涓緢澶х殑璇尯鏄槑鏄庣獥鍙ｉ暱搴︽槸鍥哄畾鐨勶紝杩樼敤淇╂寚閽堝垽鏂潵鍒ゆ柇锟?
-need 鎻忚堪涓庣洰鏍囩殑宸窛锛屾墍浠ョ獥鍙ｆ墿鍏呮椂锛宯eed璁℃暟鍑忓皯锛屽弽涔嬪锟?
 java
 
 ```java
@@ -766,7 +762,6 @@ func findAnagrams(s string, p string) []int {
 
 #### 567. Permutation in String
 
-锟?38棰樹竴妯′竴锟?
 java
 
 ```java
@@ -863,9 +858,6 @@ func findMaxAverage(nums []int, k int) float64 {
 
 #### 713. Subarray Product Less Than K
 
-姹傜殑鏄痵ubarray鐨勬暟锟?
-濡傛灉鏂板姞鍏ヤ竴涓厓绱狅紝鏂扮殑subarray鎬庝箞锟?
-澧炲姞浜唈缁撳熬鐨勩€佸墧闄や簡i寮€澶寸殑锛屽墿涓嬬殑j-i+1涓厓绱犲紑澶寸殑subarray
 
 java
 
@@ -901,7 +893,7 @@ func numSubarrayProductLessThanK(nums []int, k int) int {
 }
 ```
 
-#### 862.聽Shortest Subarray with Sum at Least K
+#### 862.Shortest Subarray with Sum at Least K
 
 go
 
@@ -1307,7 +1299,7 @@ class Solution {
 }
 ```
 
-#### 1425.聽Constrained Subsequence Sum
+#### 1425.Constrained Subsequence Sum
 
 java
 
@@ -1373,7 +1365,7 @@ func constrainedSubsetSum(nums []int, k int) int {
 
 ```
 
-#### 1438.聽Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
+#### 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
 
 go
 

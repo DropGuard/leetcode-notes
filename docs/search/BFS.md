@@ -448,7 +448,7 @@ class Solution {
 
 #### 785. Is Graph Bipartite?
 
-验证二分图
+Verify bipartite graph
 
 java
 
@@ -846,7 +846,7 @@ impl Solution {
 }
 ```
 
-#### 130. Surrounded Regions
+ #### 130. Surrounded Regions
 
 go
 
@@ -995,7 +995,7 @@ func rightSideView(root *TreeNode) []int {
 
 #### 200. Number of Islands
 
-在矩阵上搜索，BFS的空间复杂度更优，是n级别，而不是n^2
+Searching on a matrix, BFS has better space complexity, which is O(n) instead of O(n^2).
 
 go
 
@@ -1278,7 +1278,7 @@ impl Solution {
 }
 ```
 
-#### 463. Island Perimeter
+ #### 463. Island Perimeter
 
 go
 
@@ -1394,7 +1394,7 @@ class Solution {
 }
 ```
 
-#### 542. 01 Matrix
+ #### 542. 01 Matrix
 
 go
 
@@ -1765,9 +1765,9 @@ class Solution {
 
 #### 743. Network Delay Time
 
-用邻接表构图，用堆里取延迟最低的节点访问
+Build the graph using an adjacency list and use a heap to access the node with the lowest delay.
 
-D算法，限制了边无负权重
+Dijkstra's algorithm, restricted to non-negative edge weights.
 
 O(V * log(E) )
 
@@ -1944,7 +1944,7 @@ impl Solution {
 
 [https://leetcode.com/problems/letter-case-permutation/solutions/115485/java-easy-bfs-dfs-solution-with-explanation/](https://leetcode.com/problems/letter-case-permutation/solutions/115485/java-easy-bfs-dfs-solution-with-explanation/)
 
-其实就是二叉树层序遍历，返回最后一层
+It is essentially a level-order traversal of a binary tree, returning the last level.
 
 go
 
@@ -2141,7 +2141,7 @@ class Solution {
 }
 ```
 
-#### 841. Keys and Rooms
+ #### 841. Keys and Rooms
 
 go
 
@@ -2215,9 +2215,9 @@ class Solution {
 }
 ```
 
-#### 1091. Shortest Path in Binary Matrix
+ #### 1091. Shortest Path in Binary Matrix
 
-在图上做宽搜需要用visited标记访问，一律在入队列之前标记visited
+When performing Breadth-First Search (BFS) on a graph, use a 'visited' array to mark nodes as visited. Always mark as visited before enqueuing to avoid redundant processing.
 
 Go
 

@@ -1,4 +1,4 @@
-#### 347. Top K Frequent Elements
+#### 347. Top K Frequent Elements
 
 https://leetcode.com/problems/top-k-frequent-elements/solutions/81602/java-o-n-solution-bucket-sort/
 

@@ -1,5 +1,5 @@
 
-有向无环图中使用。可以避免循环依赖问题，比如编译打包时就用到
+Used in Directed Acyclic Graphs (DAG). It can help avoid circular dependency issues, such as those encountered during compilation and packaging.
 
 #### [1462. Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/)
 

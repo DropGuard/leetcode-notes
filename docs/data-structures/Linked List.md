@@ -1,4 +1,4 @@
-一旦头节点可能删除，就使用dummy node
+Use a dummy node whenever the head node might be deleted.
 
 #### 725. Split Linked List in Parts
 
@@ -496,13 +496,13 @@ class Solution {
 
 #### 141. Linked List Cycle
 
-判断环形链表
+Detect a cycle in a linked list
 
-快慢指针相遇的话，说明有环
+If the fast and slow pointers meet, it means there is a cycle
 
-如果快指针走完了，都没碰到一起，说明没有环
+If the fast pointer reaches the end without meeting the slow pointer, there is no cycle
 
-不用判断慢指针走不走到头
+No need to check if the slow pointer reaches the end
 
 ```go
 func hasCycle(head *ListNode) bool {
@@ -616,7 +616,7 @@ func reverse(head *ListNode) *ListNode {
 
 python
 
-一行交换的写法有顺序要求，比如必须先设置curr.next才能变动curr
+Single-line swap syntax has order requirements; for example, curr.next must be set before changing curr
 
 ```python
 class Solution:
@@ -1074,9 +1074,9 @@ class Solution:
 
 #### 206. Reverse Linked List
 
-反转链表
+Reverse a linked list
 
-迭代 go
+Iteration go
 
 ```go
 func reverseList(head *ListNode) *ListNode {
@@ -1088,7 +1088,7 @@ func reverseList(head *ListNode) *ListNode {
 }
 ```
 
-迭代 python
+Iteration python
 
 ```python
 class Solution:
@@ -1099,7 +1099,7 @@ class Solution:
         return prev
 ```
 
-递归 python
+Recursion python
 
 ```python
 class Solution:
@@ -1112,7 +1112,7 @@ class Solution:
         return res
 ```
 
-递归 go
+Recursion go
 
 ```go
 func reverseList(head *ListNode) *ListNode {
@@ -1128,11 +1128,11 @@ func reverseList(head *ListNode) *ListNode {
 
 #### 234. Palindrome Linked List
 
-判断回文链表
+Determine if a linked list is a palindrome
 
-反转后半部分然后比较
+Reverse the second half and compare
 
-判断完需要恢复原样
+Restore the original list after the determination
 
 O(1) space
 
@@ -1178,25 +1178,25 @@ func deleteNode(node *ListNode) {
 
 #### 287. Find the Duplicate Number
 
-长度为n+1的数组，每个数都在range [1, n]范围中
+An array of length n+1 where each number is in the range [1, n].
 
-（其中必有重复数字）
+(There must be duplicate numbers.)
 
-假设其中仅仅有一个数重复（重复两次甚至更多），如何找出这个数？
+Assuming only one number is duplicated (appearing twice or more), how do you find this number?
 
-限制：不可修改原本数组，不可超过常数级别空间复杂度
+Constraints: Do not modify the original array; do not exceed constant space complexity.
 
-空间的限制意味着不能用hashset保存
+Space constraints mean a HashSet cannot be used.
 
-提示用线性时间复杂度解决
+Hint: Solve with linear time complexity.
 
-- 将数组看作链表，根据数组的值当做索引、寻址，可以找下一个节点
+- Treat the array as a linked list; use the array values as indices for addressing to find the next node.
 
-- 由于数组存在重复值，所以链表必定成环
+- Since the array contains duplicate values, the linked list must contain a cycle.
 
-- 找到环的入口即可
+- Just find the entry point of the cycle.
 
-- 假设数组为 [1,3,4,2,2]
+- Suppose the array is [1, 3, 4, 2, 2].
 
   [0|1] -> [1|3]-> [3|2]-> [2|4]-> [4|2]-> [2|4]
 
@@ -1242,7 +1242,7 @@ class Solution {
 }
 ```
 
-#### 445. Add Two Numbers II
+#### 445. Add Two Numbers II
 
 Go
 
@@ -1367,7 +1367,7 @@ func middleNode(head *ListNode) *ListNode {
 
 #### 1206. Design Skiplist
 
-删除数据的时候要注意把索引也删了
+When deleting data, be careful to also delete the index
 
 Go
 
@@ -1552,4 +1552,3 @@ class Solution {
     }
 }
 ```
-

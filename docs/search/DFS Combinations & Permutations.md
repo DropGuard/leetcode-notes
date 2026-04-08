@@ -1,16 +1,16 @@
-含有重复元素的排列组合问题，需要避免构造重复方案，比如只拿第一个后续全部跳过，而不是用hashset过滤，因为没必要构造出重复的答案
+For permutation and combination problems with duplicate elements, it is necessary to avoid constructing duplicate solutions. For example, by only taking the first occurrence and skipping subsequent identical elements, rather than filtering with a hashset, as there is no need to generate duplicate answers in the first place.
 
-debug应当在函数入口打印递归参数的变化
+Debugging should involve printing changes to recursive parameters at the function entry.
 
-**架构师注解：Go 语言的回溯写法选择** 在 Go 语言中，尽量避免使用 `dfs(append(path, val))` 这种**隐式回溯**写法。
+**Architect's Note: Choosing Backtracking Styles in Go** In Go, avoid using the **implicit backtracking** style like `dfs(append(path, val))`.
 
-**原因**：当 slice 容量（cap）满时，`append` 会触发扩容并分配新数组。在递归树中，如果父节点的 `path` 容量已满，后续的每一个子分支（Sibling）执行 `append` 时都会**各自**触发一次独立的扩容和内存拷贝。这会导致 $O(N^2)$ 级别的冗余内存分配。
+**Reason**: When a slice's capacity (`cap`) is full, `append` triggers a reallocation and copies the underlying array. In a recursion tree, if a parent node's `path` is at capacity, every subsequent sibling branch performing an `append` will trigger its own independent reallocation and memory copy. This leads to redundant memory allocations of $O(N^2)$ complexity.
 
-**推荐**：使用**显式回溯**。预先分配足够容量 (`make([]int, 0, n)`)，并在递归前后手动 Push/Pop (`path = append(path, val)` ... `path = path[:len(path)-1]`)。这样可以确保所有递归分支复用同一个底层数组，实现零内存分配（Zero-Allocation）。
+**Recommendation**: Use **explicit backtracking**. Pre-allocate sufficient capacity (`make([]int, 0, n)`) and manually Push/Pop before and after the recursive call (`path = append(path, val)` ... `path = path[:len(path)-1]`). This ensures all recursive branches reuse the same underlying array, achieving Zero-Allocation.
 
 #### 17. Letter Combinations of a Phone Number
 
-组合问题，每层递归仅处理一个数字即可
+For combination problems, each recursion level only needs to process one digit.
 
 go 
 
@@ -24,7 +24,7 @@ func letterCombinations(digits string) []string {
 		"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
 	}
 	var res []string
-	// 预分配容量，避免append扩容
+	// Pre-allocate capacity to avoid append reallocations
 	path := make([]byte, 0, n)
 
 	var dfs func(index int)
@@ -80,7 +80,7 @@ impl Solution {
 }
 ```
 
-java 原地覆写
+java In-place Overwriting
 
 ```java
 public List<String> letterCombinations(String digits) {  
@@ -145,7 +145,7 @@ class Solution:
 
 #### 22. Generate Parentheses
 
-在系统设计中，我们通常更喜欢 “减法策略” (Count Down)。无状态感：减法策略不需要知道 n 是多少，只需要知道“还有没有剩”。这使得递归函数少传一个参数（不需要传 n，只需要比对 0），函数签名更干净。
+In system design, we generally prefer the subtraction strategy (Count Down). Statelessness: the subtraction strategy does not need to know what n is, only whether there are any remaining. This allows the recursive function to pass one fewer parameter (no need to pass n, just compare against 0), making the function signature cleaner.
 
 go
 
@@ -260,9 +260,9 @@ impl Solution {
 
 https://leetcode.com/problems/combination-sum/solutions/16510/Python-dfs-solution./
 
-“完全背包” (Unbounded Knapsack) 变种问题， “无限制选取的回溯”。
+A variant of the Unbounded Knapsack problem, involving backtracking with unlimited selection.
 
-python 意会
+python conceptual
 
 ```python
 class Solution:
@@ -290,13 +290,13 @@ go
 func combinationSum(candidates []int, target int) [][]int {
 	sort.Ints(candidates)
 	var res [][]int
-	// 预估最大深度，例如 target/min(candidates)
+	// Estimate maximum depth, e.g., target/min(candidates)
 	path := make([]int, 0, target/candidates[0]+1) 
 	
 	var dfs func(start int, target int)
 	dfs = func(start int, target int) {
 		if target == 0 {
-			// 必须拷贝path，因为底层数组会被后续修改
+			// Must copy path, as the underlying array will be modified later
 			temp := make([]int, len(path))
 			copy(temp, path)
 			res = append(res, temp)
@@ -493,21 +493,19 @@ impl Solution {
 
 #### 46. Permutations
 
-交换法 go
+������ go
+**Swap Method (In-place)**
 
-把数组分为两部分：`[已固定的 | 待考虑的]
+Divide the array into two parts: `[Fixed | Unprocessed]`.
 
-把 `start` 位置的数，和后面 `start ~ n` 范围内的每一个数 **交换 (Swap)**。
+Swap the number at the `start` position with every number in the `start ~ n` range. After the swap, the `start` position is considered fixed, and the function recursively processes `start + 1`. Restore the state by swapping back.
 
-交换后，认为 `start` 位置固定了，递归去处理 `start + 1`。
-
-交换法 Go
-
+Swap Method Go
 ```go
 func permute(nums []int) [][]int {
 	var res [][]int
 
-	// In-place函数
+	// In-place function
 	var dfs func(i int)
 	dfs = func(i int) {
 		if i == len(nums) {
@@ -526,7 +524,7 @@ func permute(nums []int) [][]int {
 }
 ```
 
-交换法 python
+Swap Method python
 
 ```python
 class Solution:
@@ -649,7 +647,7 @@ impl Solution {
 
 #### 47. Permutations II
 
-python 意会
+python conceptual
 
 ```python
 class Solution:  

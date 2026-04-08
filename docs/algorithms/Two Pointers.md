@@ -171,7 +171,7 @@ func lengthOfLastWord(s string) int {
 }
 ```
 
-#### 125. Valid Palindrome
+#### 125. Valid Palindrome
 
 Go
 
@@ -263,7 +263,7 @@ func reverse(words []string) {
 
 O(1) space
 
-太精妙了https://leetcode.com/problems/reverse-words-in-a-string/solutions/47720/clean-java-two-pointers-solution-no-trim-no-split-no-stringbuilder/
+So ingenious https://leetcode.com/problems/reverse-words-in-a-string/solutions/47720/clean-java-two-pointers-solution-no-trim-no-split-no-stringbuilder/
 
 ```go
 func reverseWords(s string) string {

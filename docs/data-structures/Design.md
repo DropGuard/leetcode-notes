@@ -265,7 +265,7 @@ class SmallestInfiniteSet {
 }
 ```
 
-rust 由于LC的rust版本低，不能提交这个
+rust - Cannot be submitted due to the outdated Rust version on LC.
 
 ```rust
 use std::collections::BTreeSet;

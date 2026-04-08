@@ -167,7 +167,7 @@ class Solution {
 }
 ```
 
-#### 71. Simplify Path
+#### 71. Simplify Path
 
 go
 
@@ -556,7 +556,7 @@ impl MyStack {
 }
 ```
 
-####  227. Basic Calculator II
+####  227. Basic Calculator II
 
 java
 
@@ -755,7 +755,7 @@ func isPalindrome(head *ListNode) bool {
 }
 ```
 
-#### 394. Decode String
+#### 394. Decode String
 
 go
 
@@ -848,7 +848,7 @@ impl Solution {
 ```
 
 
-#### 682. Baseball Game
+ #### 682. Baseball Game
 
 go
 

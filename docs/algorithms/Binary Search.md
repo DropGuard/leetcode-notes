@@ -143,9 +143,9 @@ func searchInsert(nums []int, target int) int {
 
 #### 69. Sqrt(x)
 
-输入一整数，求平方根
+Input an integer, find its square root.
 
-二分查找
+Binary Search
 
 ```go
 func mySqrt(x int) int {
@@ -254,7 +254,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 ```
 
 
-#### 278. First Bad Version
+#### 278. First Bad Version
 
 ```go
 func firstBadVersion(n int) int {  

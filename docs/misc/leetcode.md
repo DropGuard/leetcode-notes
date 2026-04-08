@@ -1,4 +1,4 @@
-#### [165. Compare Version Numbers](https://leetcode.com/problems/compare-version-numbers/)
+﻿#### [165. Compare Version Numbers](https://leetcode.com/problems/compare-version-numbers/)
 
 java
 
@@ -94,7 +94,7 @@ java
 
 ```java
 class Solution {
-    // Floyd algorithm
+    // Floyd-Warshall algorithm
     public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
         boolean[][] connected = new boolean[n][n];
         for (int[] pre : prerequisites) {
@@ -371,7 +371,7 @@ func romanToInt(s string) int {
 
 #### 14. Longest Common Prefix
 
-找出最长公共前缀
+Find the longest common prefix
 
 Vertical Scanning
 
@@ -451,7 +451,7 @@ func fourSum(nums []int, target int) [][]int {
 }
 ```
 
-#### 26. Remove Duplicates from Sorted Array
+#### 26. Remove Duplicates from Sorted Array
 
 go
 
@@ -1090,7 +1090,7 @@ class Solution:
 ```
 
 
-#### 65. Valid Number
+#### 65. Valid Number
 
 ```go
 func isNumber(s string) bool {
@@ -1369,8 +1369,6 @@ func maxProduct(nums []int) int {
 
 #### 169. Majority Element
 
-求众数，出现频率超过一半的�?
-排序，然后找到位于中间的数就是答案�?
 ```go
 func majorityElement(nums []int) int {
     sort.Ints(nums)
@@ -1378,7 +1376,7 @@ func majorityElement(nums []int) int {
 }
 ```
 
-#### 172. Factorial Trailing Zeroes
+#### 172. Factorial Trailing Zeroes
 
 python
 
@@ -1413,15 +1411,8 @@ func largestNumber(nums []int) string {
 
 #### 189. Rotate Array
 
-给定一个数组，将数组中的元素向右移�?k 个位置，多出来的元素放左�?
-要求不使用额外空间�?
-冒冒失失的用 k 作为索引，一提交就会越界，而假设数组长度为7，k=7，相当于没有反转�?
-将题目要求的反转拆分成三步：
+Reverse the entire array
 
-反转整个数组
-
-反转�?到k的元�?
-反转从k到末位的元素
 
 ```go
 func rotate(nums []int, k int) {
@@ -1509,7 +1500,7 @@ func countPrimes(n int) int {
 ```
 
 
-#### 221. Maximal Square
+#### 221. Maximal Square
 
 python
 
@@ -1540,7 +1531,7 @@ class Solution:
         return (bx2 - bx1) * (by2 - by1) + (ax2 - ax1) * (ay2 - ay1) - max(width, 0) * max(height, 0)
 ```
 
-#### 228. Summary Ranges
+#### 228. Summary Ranges
 
 go
 
@@ -1584,7 +1575,7 @@ class Solution {
 }
 ```
 
-#### 233. Number of Digit One
+#### 233. Number of Digit One
 
 the current digit being 0, 1 and >=2
 
@@ -1668,7 +1659,7 @@ func minOne(values ...int) int {
 ```
 
 
-#### 283. Move Zeroes
+#### 283. Move Zeroes
 
 ```python
 class Solution:  
@@ -1695,7 +1686,7 @@ func moveZeroes(nums []int) {
 ```
 
 
-#### 292. Nim Game
+#### 292. Nim Game
 
 ```python
 class Solution:
@@ -1703,7 +1694,7 @@ class Solution:
         return n%4
 ```
 
-#### 303. Range Sum Query - Immutable
+#### 303. Range Sum Query - Immutable
 
 go
 
@@ -1725,7 +1716,7 @@ func (numArray *NumArray) SumRange(left int, right int) int {
 }
 ```
 
-#### 304. Range Sum Query 2D - Immutable
+#### 304. Range Sum Query 2D - Immutable
 
 go
 
@@ -1814,7 +1805,7 @@ func reverseString(s []byte) {
 }
 ```
 
-#### 357. Count Numbers with Unique Digits
+#### 357. Count Numbers with Unique Digits
 
 go
 
@@ -1881,7 +1872,7 @@ func isPerfectSquare(num int) bool {
 }
 ```
 
-#### 368. Largest Divisible Subset
+#### 368. Largest Divisible Subset
 
 go
 
@@ -1969,7 +1960,7 @@ class Solution {
 }
 ```
 
-#### 375. Guess Number Higher or Lower II
+#### 375. Guess Number Higher or Lower II
 
 ```go
 func getMoneyAmount(n int) int {  
@@ -2020,7 +2011,7 @@ func wiggleMaxLength(nums []int) int {
 
 
 
-#### 392. Is Subsequence
+#### 392. Is Subsequence
 
 ```go
 func isSubsequence(s string, t string) bool {  
@@ -2044,7 +2035,7 @@ func isSubsequence(s string, t string) bool {
 }
 ```
 
-#### 397. Integer Replacement
+#### 397. Integer Replacement
 
 go
 
@@ -2104,7 +2095,7 @@ func reconstructQueue(people [][]int) [][]int {
 }
 ```
 
-#### 409. Longest Palindrome
+#### 409. Longest Palindrome
 
 go
 
@@ -2127,7 +2118,7 @@ func longestPalindrome(s string) int {
 }
 ```
 
-#### 410. Split Array Largest Sum
+#### 410. Split Array Largest Sum
 
 go
 
@@ -2167,7 +2158,7 @@ func isValid(nums []int, k int, target int) bool {
    return true  
 }
 ```
-#### 413. Arithmetic Slices
+#### 413. Arithmetic Slices
 
 java
 
@@ -2204,7 +2195,7 @@ func numberOfArithmeticSlices(nums []int) int {
    return res  
 }
 ```
-#### 414. Third Maximum Number
+#### 414. Third Maximum Number
 
 go
 
@@ -2273,7 +2264,7 @@ func eraseOverlapIntervals(intervals [][]int) int {
 ```
 
 
-#### 441. Arranging Coins
+#### 441. Arranging Coins
 
 java
 
@@ -2322,7 +2313,7 @@ func findMinArrowShots(points [][]int) int {
 }
 ```
 
-#### 453. Minimum Moves to Equal Array Elements
+#### 453. Minimum Moves to Equal Array Elements
 
 go
 
@@ -2414,7 +2405,7 @@ class Solution:
         return count
 ```
 
-#### 464. Can I Win
+#### 464. Can I Win
 
 Go
 
@@ -2466,7 +2457,7 @@ class Solution:
         return self.dfs(desired, maxChoose, {}, 0)
 ```
 
-#### 476. Number Complement
+#### 476. Number Complement
 
 go
 
@@ -2494,7 +2485,7 @@ class Solution {
 }
 ```
 
-#### 486. Predict the Winner
+#### 486. Predict the Winner
  When n is even, we can always consider the array [A B C D]. If A+C>=B+D, the first player will choose A, else D. Thus the first player always wins.
 
 https://leetcode.com/problems/predict-the-winner/discuss/96828/JAVA-9-lines-DP-solution-easy-to-understand-with-improvement-to-O(N)-space-complexity.
@@ -2587,7 +2578,7 @@ class Solution:
         return ret
 ```
 
-#### 496. Next Greater Element I
+#### 496. Next Greater Element I
 
 ```go
 func nextGreaterElement(nums1 []int, nums2 []int) []int {  
@@ -2641,7 +2632,7 @@ func reverse(s []byte) {
 ```
 
 
-#### 556. Next Greater Element III
+#### 556. Next Greater Element III
 
 ```go
 func nextGreaterElement(n int) int {  
@@ -2690,7 +2681,7 @@ class Solution:
         return min(len(candyType)//2,len(set(candyType)))
 ```
 
-#### 581. Shortest Unsorted Continuous Subarray
+#### 581. Shortest Unsorted Continuous Subarray
 
 go
 
@@ -2834,7 +2825,7 @@ impl MagicDictionary {
 
 
 
-#### 674. Longest Continuous Increasing Subsequence
+#### 674. Longest Continuous Increasing Subsequence
 
 ```go
 func findLengthOfLCIS(nums []int) int {
@@ -2864,7 +2855,7 @@ class Solution:
         return res
 ```
 
-#### 678. Valid Parenthesis String
+#### 678. Valid Parenthesis String
 
 go
 
@@ -2921,7 +2912,7 @@ class Solution {
 }
 ```
 
-#### 724. Find Pivot Index
+#### 724. Find Pivot Index
 
 ```go
 func pivotIndex(nums []int) int {  
@@ -2959,7 +2950,7 @@ func monotoneIncreasingDigits(n int) int {
 }
 ```
 
-#### 741. Cherry Pickup
+#### 741. Cherry Pickup
 
 In dp definition, no need to consider the position of first leg to reach and and the last leg start from has to be the same.
 
@@ -3044,7 +3035,7 @@ func partitionLabels(s string) []int {
 }
 ```
 
-#### 787. Cheapest Flights Within K Stops
+#### 787. Cheapest Flights Within K Stops
 
 ```go
 func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
@@ -3136,7 +3127,7 @@ func largestSumAfterKNegations(nums []int, k int) int {
 }
 ```
 
-#### 1021. Remove Outermost Parentheses
+#### 1021. Remove Outermost Parentheses
 
 go
 
@@ -3212,7 +3203,7 @@ func removeDuplicates(s string) string {
 }
 ```
 
-go  �?
+go
 ```go
 func removeDuplicates(s string) string {
    t := []byte(s)
@@ -3230,7 +3221,7 @@ func removeDuplicates(s string) string {
 
 
 
-#### 1221. Split a String in Balanced Strings
+#### 1221. Split a String in Balanced Strings
 
 ```go
 func balancedStringSplit(s string) int {  
@@ -3372,7 +3363,7 @@ class Solution {
 }
 ```
 
-go参考https://github.com/ganeshskudva/Leetcode-Golang
+Go implementation reference: https://github.com/ganeshskudva/Leetcode-Golang
 
 ```go
 func addStrings(num1 string, num2 string) string {
