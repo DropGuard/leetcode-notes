@@ -1,1 +1,6 @@
 .obsidian/
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+dist/
+package-lock.json

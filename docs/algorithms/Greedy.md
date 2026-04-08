@@ -438,12 +438,6 @@ func minDominoRotations(A []int, B []int) int {
    }  
    return -1  
 }  
-func min(a, b int) int {  
-   if a > b {  
-      return b  
-   }  
-   return a  
-}
 ```
 
 #### 860. Lemonade Change

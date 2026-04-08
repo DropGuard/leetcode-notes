@@ -731,12 +731,6 @@ func jump(nums []int) int {
    }  
    return steps  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 python
@@ -859,12 +853,6 @@ func canJump(nums []int) bool {
     }
     return false
 }
-func max(a, b int) int {
-    if a > b {
-        return a
-    }
-    return b
-}
 ```
 
 python
@@ -904,12 +892,6 @@ func merge(intervals [][]int) [][]int {
 	return result
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 ```
 
 python
@@ -947,18 +929,6 @@ func insert(intervals [][]int, newInterval []int) [][]int {
       ret = append(ret, intervals[i])
    }
    return ret
-}
-func min(a, b int) int {
-   if a < b {
-      return a
-   }
-   return b
-}
-func max(a, b int) int {
-   if a > b {
-      return a
-   }
-   return b
 }
 ```
 
@@ -1379,12 +1349,6 @@ func canCompleteCircuit(gas []int, cost []int) int {
     }
     return -1
 }
-func min(a, b int) int {
-    if a > b {
-        return b
-    }
-    return a
-}
 ```
 #### 152. Maximum Product Subarray
 
@@ -1405,10 +1369,8 @@ func maxProduct(nums []int) int {
 
 #### 169. Majority Element
 
-求众数，出现频率超过一半的数
-
-排序，然后找到位于中间的数就是答案。
-
+求众数，出现频率超过一半的�?
+排序，然后找到位于中间的数就是答案�?
 ```go
 func majorityElement(nums []int) int {
     sort.Ints(nums)
@@ -1451,18 +1413,14 @@ func largestNumber(nums []int) string {
 
 #### 189. Rotate Array
 
-给定一个数组，将数组中的元素向右移动 k 个位置，多出来的元素放左边
-
-要求不使用额外空间。
-
-冒冒失失的用 k 作为索引，一提交就会越界，而假设数组长度为7，k=7，相当于没有反转。
-
+给定一个数组，将数组中的元素向右移�?k 个位置，多出来的元素放左�?
+要求不使用额外空间�?
+冒冒失失的用 k 作为索引，一提交就会越界，而假设数组长度为7，k=7，相当于没有反转�?
 将题目要求的反转拆分成三步：
 
 反转整个数组
 
-反转从0到k的元素
-
+反转�?到k的元�?
 反转从k到末位的元素
 
 ```go
@@ -1809,7 +1767,6 @@ func bulbSwitch(n int) int {
 }
 ```
 
-
 #### 343. Integer Break
 
 go
@@ -1825,15 +1782,7 @@ func integerBreak(n int) int {
     }
     return dp[n]
 }
-func max(values ...int) int {
-    res := values[0]
-    for _, value := range values {
-        if value > res {
-            res = value
-        }
-    }
-    return res
-}
+
 ```
 
 python
@@ -2039,18 +1988,7 @@ func getMoneyAmount(n int) int {
    }  
    return dp[1][n]  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}  
-func min(a, b int) int {  
-   if a > b {  
-      return b  
-   }  
-   return a  
-}
+
 ```
 
 ```python
@@ -2213,10 +2151,7 @@ func splitArray(nums []int, k int) int {
       }  
    }  
    return left  
-}  
-func max(a, b int) int {  
-   return int(math.Max(float64(a), float64(b)))  
-}  
+}
 func isValid(nums []int, k int, target int) bool {  
    count, sum := 1, 0  
    for _, num := range nums {  
@@ -2335,12 +2270,6 @@ func eraseOverlapIntervals(intervals [][]int) int {
    }
    return res
 }
-func min(a, b int) int {
-   if a < b {
-      return a
-   }
-   return b
-}
 ```
 
 
@@ -2390,12 +2319,6 @@ func findMinArrowShots(points [][]int) int {
       }
    }
    return res
-}
-func min(a, b int) int {
-   if a < b {
-      return a
-   }
-   return b
 }
 ```
 
@@ -2595,12 +2518,6 @@ func PredictTheWinner(nums []int) bool {
    }  
    return dp[0][n-1] >= 0  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 O(N) space
@@ -2623,12 +2540,6 @@ func PredictTheWinner(nums []int) bool {
    }  
    return dp[n-1] >= 0  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 python
@@ -2938,12 +2849,6 @@ func findLengthOfLCIS(nums []int) int {
 	}
 	return res
 }
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 ```
 
 ```python
@@ -2983,9 +2888,6 @@ func checkValidString(s string) bool {
       }  
    }  
    return needMin == 0  
-}  
-func max(a, b int) int {  
-   return int(math.Max(float64(a), float64(b)))  
 }
 ```
 
@@ -3099,12 +3001,6 @@ func cherryPickup(grid [][]int) int {
    }  
    return max(dp[n-1][n-1], 0)  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}  
 func out(grid [][]int, i, j, p, q int) bool {  
    n := len(grid)  
    if j < 0 || q < 0 || j >= n || q >= n {  
@@ -3124,12 +3020,6 @@ func minCostClimbingStairs(cost []int) int {
       dp[i] = min(dp[i-1], dp[i-2]) + cost[i]
    }
    return min(dp[len(dp)-1], dp[len(dp)-2])
-}
-func min(a, b int) int {
-   if a < b {
-      return a
-   }
-   return b
 }
 ```
 
@@ -3152,23 +3042,11 @@ func partitionLabels(s string) []int {
    }
    return res
 }
-func max(a, b int) int {
-   if a > b {
-      return a
-   }
-   return b
-}
 ```
 
 #### 787. Cheapest Flights Within K Stops
 
 ```go
-func min(a, b int) int {
-    if a > b {
-        return b
-    }
-    return a
-}
 func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
     dp := make([][]int, k+2)
     for i := range dp {
@@ -3334,8 +3212,7 @@ func removeDuplicates(s string) string {
 }
 ```
 
-go  栈
-
+go  �?
 ```go
 func removeDuplicates(s string) string {
    t := []byte(s)

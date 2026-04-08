@@ -47,12 +47,6 @@ func maxArea(height []int) int {
       res = max(res, lower*(right-left+1))  
    }  
    return res  
-}  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
 }
 ```
 

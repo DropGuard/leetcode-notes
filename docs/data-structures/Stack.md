@@ -144,12 +144,6 @@ func longestValidParentheses(s string) int {
    }  
    return longest  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 java stack

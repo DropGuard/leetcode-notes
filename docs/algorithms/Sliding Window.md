@@ -1,7 +1,5 @@
-在数组上用指针框定窗口范围，对区间求和、求最大、求最小
-
-当窗口长度固定，只需1个指针，否则需要2个
-
+在数组上用指针框定窗口范围，对区间求和、求最大、求最�?
+当窗口长度固定，只需1个指针，否则需�?�?
 #### [1031. Maximum Sum of Two Non-Overlapping Subarrays](https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/)
 
 java
@@ -93,12 +91,6 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return res
 }
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 ```
 
 Use hashset
@@ -150,7 +142,7 @@ impl Solution {
 
 #### 30. Substring with Concatenation of All Words
 
-可以将起点根据 当前下标与单词长度的取余结果 进行分类
+可以将起点根�?当前下标与单词长度的取余结果 进行分类
 
 rust
 
@@ -363,12 +355,6 @@ func minSubArrayLen(target int, nums []int) int {
 	}
 	return res
 }
-func min(a, b int) int {
-	if a > b {
-		return b
-	}
-	return a
-}
 ```
 
 #### 220. Contains Duplicate III
@@ -547,12 +533,6 @@ func maxSlidingWindow(nums []int, k int) []int {
     }
     return res
 }
-func max(a, b int) int {
-    if a > b {
-        return a
-    }
-    return b
-}
 ```
 
 divide & conquer
@@ -673,12 +653,6 @@ func longestSubstring(s string, k int) int {
 	}
 	return res
 }
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 ```
 
 #### 424. Longest Repeating Character Replacement
@@ -702,12 +676,6 @@ func characterReplacement(s string, k int) int {
 		res = max(res, j-i+1)
 	}
 	return res
-}
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
 ```
 
@@ -733,10 +701,8 @@ class Solution {
 
 #### 438. Find All Anagrams in a String
 
-一个很大的误区是明明窗口长度是固定的，还用俩指针判断来判断去
-
-need 描述与目标的差距，所以窗口扩充时，need计数减少，反之增加
-
+一个很大的误区是明明窗口长度是固定的，还用俩指针判断来判断�?
+need 描述与目标的差距，所以窗口扩充时，need计数减少，反之增�?
 java
 
 ```java
@@ -802,8 +768,7 @@ func findAnagrams(s string, p string) []int {
 
 #### 567. Permutation in String
 
-和438题一模一样
-
+�?38题一模一�?
 java
 
 ```java
@@ -896,21 +861,12 @@ func findMaxAverage(nums []int, k int) float64 {
    }  
    return float64(res) / float64(k)  
 }  
-  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 #### 713. Subarray Product Less Than K
 
-求的是subarray的数量
-
-如果新加入一个元素，新的subarray怎么求
-
+求的是subarray的数�?
+如果新加入一个元素，新的subarray怎么�?
 增加了j结尾的、剔除了i开头的，剩下的j-i+1个元素开头的subarray
 
 java
@@ -979,12 +935,6 @@ func shortestSubarray(nums []int, k int) int {
    }  
    return -1  
 }  
-func min(a, b int) int {  
-   if a > b {  
-      return b  
-   }  
-   return a  
-}
 ```
 
 java
@@ -1073,12 +1023,6 @@ func totalFruit(fruits []int) int {
 		res = max(res, j-i+1)
 	}
 	return res
-}
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
 ```
 
@@ -1215,12 +1159,6 @@ func longestOnes(nums []int, k int) int {
    }  
    return res  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 #### 1052. Grumpy Bookstore Owner
@@ -1262,12 +1200,6 @@ func maxSatisfied(customers []int, grumpy []int, minutes int) int {
 		res2 = max(res2, window)
 	}
 	return res1 + res2
-}
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
 ```
 
@@ -1373,7 +1305,7 @@ class Solution {
             res += i;  
         }  
         return res;  
-    }  
+    }
 }
 ```
 
@@ -1384,57 +1316,63 @@ java
 ```java
 class Solution {
     public int constrainedSubsetSum(int[] nums, int k) {
-        int n = nums.length, res = nums[0];
-        int[] cp = Arrays.copyOf(nums, n);
-        ArrayDeque<Integer> deque = new ArrayDeque<>();
-        for (int i = 0; i < n; i++) {
-            if (!deque.isEmpty()) cp[i] += deque.peek();
-            res = Math.max(res, cp[i]);
-            while (!deque.isEmpty() && deque.peekLast() < cp[i]) {
-                deque.pollLast();
+        int n = nums.length;
+        int[] dp = Arrays.copyOf(nums, n);
+        ArrayDeque<Integer> dq = new ArrayDeque<>();
+        dq.offer(0);
+        int res = nums[0];
+
+        for (int i = 1; i < n; i++) {
+            if (!dq.isEmpty() && dq.peek() < i - k) {
+                dq.poll();
             }
-            if (cp[i] > 0) deque.offer(cp[i]);
-            if (!deque.isEmpty() && i >= k && deque.peek() == cp[i - k]) {
-                deque.pollFirst();
+
+            if (!dq.isEmpty() && dp[dq.peek()] > 0) {
+                dp[i] += dp[dq.peek()];
             }
+            res = Math.max(res, dp[i]);
+
+            while (!dq.isEmpty() && dp[i] >= dp[dq.peekLast()]) {
+                dq.pollLast();
+            }
+            dq.offer(i);
         }
         return res;
     }
 }
+
+
 ```
 
 go
 
 ```go
 func constrainedSubsetSum(nums []int, k int) int {
-	var deque []int
-	cp := make([]int, len(nums))
-	copy(cp, nums)
-	for i := range cp {
-		if len(deque) > 0 {
-			cp[i] += deque[0]
-		}
-		for len(deque) > 0 && cp[i] > deque[len(deque)-1] {
-			deque = deque[:len(deque)-1]
-		}
-		if cp[i] > 0 {
-			deque = append(deque, cp[i])
-		}
-		if i >= k && len(deque) > 0 && deque[0] == cp[i-k] {
-			deque = deque[1:]
-		}
-	}
-	return max(cp)
-}
-func max(nums []int) int {
+	n := len(nums)
+	dp := make([]int, n)
+	copy(dp, nums)
+	dq := []int{0}
 	res := nums[0]
-	for _, v := range nums {
-		if v > res {
-			res = v
+
+	for i := 1; i < n; i++ {
+		if dq[0] < i-k {
+			dq = dq[1:]
 		}
+
+		if dp[dq[0]] > 0 {
+			dp[i] += dp[dq[0]]
+		}
+		res = max(res, dp[i])
+
+		for len(dq) > 0 && dp[i] >= dp[dq[len(dq)-1]] {
+			dq = dq[:len(dq)-1]
+		}
+		dq = append(dq, i)
 	}
 	return res
 }
+
+
 ```
 
 #### 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
@@ -1519,12 +1457,6 @@ func isVowel(b byte) bool {
 	default:
 		return false
 	}
-}
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
 ```
 

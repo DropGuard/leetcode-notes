@@ -3205,12 +3205,6 @@ func dfs(i, j, m, n int, matrix, dp [][]int) int {
    }  
    return dp[i][j]  
 }  
-func max(a, b int) int {  
-   if a > b {  
-      return a  
-   }  
-   return b  
-}
 ```
 
 rust

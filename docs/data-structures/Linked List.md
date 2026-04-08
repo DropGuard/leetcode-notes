@@ -965,12 +965,6 @@ func (stack *MinStack) Top() int {
 func (stack *MinStack) GetMin() int {
 	return stack.head.minValue
 }
-func min(a, b int) int {
-	if a > b {
-		return b
-	}
-	return a
-}
 ```
 
 java

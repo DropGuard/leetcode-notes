@@ -379,18 +379,6 @@ func findRadius(houses []int, heaters []int) int {
 	}
 	return res
 }
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-func min(a, b int) int {
-	if a > b {
-		return b
-	}
-	return a
-}
 ```
 
 #### 658. Find K Closest Elements
