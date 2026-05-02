@@ -1,4 +1,4 @@
-Use a dummy node whenever the head node might be deleted.
+一旦头节点可能删除，就使用dummy node
 
 #### 725. Split Linked List in Parts
 
@@ -496,13 +496,13 @@ class Solution {
 
 #### 141. Linked List Cycle
 
-Detect a cycle in a linked list
+判断环形链表
 
-If the fast and slow pointers meet, it means there is a cycle
+快慢指针相遇的话，说明有环
 
-If the fast pointer reaches the end without meeting the slow pointer, there is no cycle
+如果快指针走完了，都没碰到一起，说明没有环
 
-No need to check if the slow pointer reaches the end
+不用判断慢指针走不走到头
 
 ```go
 func hasCycle(head *ListNode) bool {
@@ -616,7 +616,7 @@ func reverse(head *ListNode) *ListNode {
 
 python
 
-Single-line swap syntax has order requirements; for example, curr.next must be set before changing curr
+一行交换的写法有顺序要求，比如必须先设置curr.next才能变动curr
 
 ```python
 class Solution:
@@ -965,6 +965,7 @@ func (stack *MinStack) Top() int {
 func (stack *MinStack) GetMin() int {
 	return stack.head.minValue
 }
+
 ```
 
 java
@@ -1074,9 +1075,9 @@ class Solution:
 
 #### 206. Reverse Linked List
 
-Reverse a linked list
+反转链表
 
-Iteration go
+迭代 go
 
 ```go
 func reverseList(head *ListNode) *ListNode {
@@ -1088,7 +1089,7 @@ func reverseList(head *ListNode) *ListNode {
 }
 ```
 
-Iteration python
+迭代 python
 
 ```python
 class Solution:
@@ -1099,7 +1100,7 @@ class Solution:
         return prev
 ```
 
-Recursion python
+递归 python
 
 ```python
 class Solution:
@@ -1112,7 +1113,7 @@ class Solution:
         return res
 ```
 
-Recursion go
+递归 go
 
 ```go
 func reverseList(head *ListNode) *ListNode {
@@ -1128,11 +1129,11 @@ func reverseList(head *ListNode) *ListNode {
 
 #### 234. Palindrome Linked List
 
-Determine if a linked list is a palindrome
+判断回文链表
 
-Reverse the second half and compare
+反转后半部分然后比较
 
-Restore the original list after the determination
+判断完需要恢复原样
 
 O(1) space
 
@@ -1178,25 +1179,25 @@ func deleteNode(node *ListNode) {
 
 #### 287. Find the Duplicate Number
 
-An array of length n+1 where each number is in the range [1, n].
+长度为n+1的数组，每个数都在range [1, n]范围中
 
-(There must be duplicate numbers.)
+（其中必有重复数字）
 
-Assuming only one number is duplicated (appearing twice or more), how do you find this number?
+假设其中仅仅有一个数重复（重复两次甚至更多），如何找出这个数？
 
-Constraints: Do not modify the original array; do not exceed constant space complexity.
+限制：不可修改原本数组，不可超过常数级别空间复杂度
 
-Space constraints mean a HashSet cannot be used.
+空间的限制意味着不能用hashset保存
 
-Hint: Solve with linear time complexity.
+提示用线性时间复杂度解决
 
-- Treat the array as a linked list; use the array values as indices for addressing to find the next node.
+- 将数组看作链表，根据数组的值当做索引、寻址，可以找下一个节点
 
-- Since the array contains duplicate values, the linked list must contain a cycle.
+- 由于数组存在重复值，所以链表必定成环
 
-- Just find the entry point of the cycle.
+- 找到环的入口即可
 
-- Suppose the array is [1, 3, 4, 2, 2].
+- 假设数组为 [1,3,4,2,2]
 
   [0|1] -> [1|3]-> [3|2]-> [2|4]-> [4|2]-> [2|4]
 
@@ -1242,7 +1243,7 @@ class Solution {
 }
 ```
 
-#### 445. Add Two Numbers II
+#### 445. Add Two Numbers II
 
 Go
 
@@ -1367,7 +1368,7 @@ func middleNode(head *ListNode) *ListNode {
 
 #### 1206. Design Skiplist
 
-When deleting data, be careful to also delete the index
+删除数据的时候要注意把索引也删了
 
 Go
 
@@ -1552,3 +1553,4 @@ class Solution {
     }
 }
 ```
+

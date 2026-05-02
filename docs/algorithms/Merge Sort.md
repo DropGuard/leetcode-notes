@@ -75,9 +75,9 @@ class Solution {
 
 #### 21. Merge Two Sorted Lists
 
-Merge two sorted lists
+合并两个有序链表
 
-Iteration go
+迭代 go
 
 ```go
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
@@ -547,11 +547,11 @@ public class Solution {
 
 #### 977.Squares of a Sorted Array
 
-Given a non-decreasing array, return an array of the squares of each element, also in non-decreasing order.
+给定一个非降序数组，返回每个元素的平方组成的数组，也要非降序
 
-When squaring the elements, the square of the smallest negative number might be the largest.
+在原有基础上平方的话，最小的负数的平方可能是最大的。
 
-Use two pointers pointing to the head and tail of the given array, create a result set `res`, compare the values, and fill `res` with the larger square.
+采用双指针分别指向给定数组的头尾，再创建结果集res，比较胜出者填入res
 
 ```go
 func sortedSquares(nums []int) []int {

@@ -116,11 +116,11 @@ impl Solution {
 
 #### 621. Task Scheduler
 
-Process the highest frequency tasks first, divided into k groups. The first k-1 groups are sufficient to store the remaining elements.
+先处理频率最高的任务，分为k组，前k-1足够存下其余元素
 
-The width of each group is n+1, as the cooling time for the same task is n.
+每一组的宽度为n+1，因为处理相同任务的冷却时间是n 
 
-Include the highest frequency tasks in the k-th group, which require several units of processing time.
+加上第k组的，最高频率的任务，需要处理数个单位时间
 
 java
 
@@ -160,7 +160,7 @@ impl Solution {
 
 #### 630. Course Schedule III
 
-Classic greedy approach: sort by end time. Accumulate the time spent on courses. If the time limit is exceeded, it means the previous schedule was not well-arranged, so remove the most time-consuming course.
+经典贪心，按照结束时间排序。收集课程耗费时间，如果超时就说明之前时间没安排好，所以剔除一个最耗时的
 
 rust
 
@@ -438,6 +438,7 @@ func minDominoRotations(A []int, B []int) int {
    }  
    return -1  
 }  
+
 ```
 
 #### 860. Lemonade Change

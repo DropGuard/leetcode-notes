@@ -35,6 +35,8 @@ func dfs(root *TreeNode, res *[]int) {
 }
 ```
 
+no recursion 手动模拟栈
+
 Go
 
 ```go
@@ -123,6 +125,18 @@ func post(root *TreeNode, res *[]int) {
 
 #### 173. Binary Search Tree Iterator
 
+手动操作栈实现中序
+
+注意栈里面装的是节点而不是数值
+
+无脑将左子树压栈，知道curr指针为空
+
+然后弹栈，让curr指针挪到栈顶元素的右子树
+
+为什么这是对的呢？ 因为整棵树可以看做根节点+左子树
+
+弹栈顺序是先左再头，递归序也对
+
 Go
 
 ```go
@@ -201,13 +215,17 @@ class BSTIterator:
         return False
 ```
 
-Binary trees are well-suited for divide and conquer and backtracking.
+二叉树非常适合用分治和回溯
 
-A binary tree has n nodes, so there are n subtrees. A subtree starts from a node and extends to the leaves.
+二叉树有n个节点，那么子树的数量是n，子树从该节点出发一直探到底
 
-For a specific node X in a binary tree, the intersection of the set of nodes appearing before X in preorder traversal and the set of nodes appearing after X in postorder traversal consists of X's ancestors. Why?
+本文收录二叉树题目但不包括BFS解法，纯纯深搜
 
-Since preorder traversal visits the root first, ancestors will appear to the left of X. Since postorder traversal visits the root last, X will appear to the left of its ancestors.
+二叉树中特定的某个节点X，在二叉树中做前序遍历得到的在X之前的节点集合，与后续遍历得到的在X之后的节点集合，求交集，发现交集都是X的祖先节点，为什么？
+
+由于先序会先访问头结点，所以祖先一定出现在X左边，后序会最后访问头结点，所以X的位置一定在其祖先的左边
+
+先序遍历中X的子节点都会出现在X的右边
 
 #### [687. Longest Univalue Path](https://leetcode.com/problems/longest-univalue-path/)
 
@@ -741,6 +759,9 @@ class Solution {
 
 #### 106. Construct Binary Tree from Inorder and Postorder Traversal
 
+用类似中序遍历的方式构建二叉树，每层递归中只处理一个节点
+
+按照中-->右-->左的顺序
 
 Go
 
@@ -902,6 +923,7 @@ func abs(a int) int {
 	}
 	return a
 }
+
 ```
 
 #### 111. Minimum Depth of Binary Tree
@@ -1021,11 +1043,11 @@ func connect(root *Node) *Node {
 
 #### 124. Binary Tree Maximum Path Sum
 
-The data range includes negative numbers, and the problem states that the path does not necessarily need to pass through the root node.
+数据范围里有负数，而且题目说不一定需要经过根节点
 
-However, since it is a path, it must pass through nodes. We can still calculate the maximum path sum for each node.
+然而既然是path就一定会经过节点，依然可以对每个节点计算和为最大的path
 
-DFS returns the maximum sum of a single path.
+DFS返回单路最大路径和
 
 go
 
@@ -1044,6 +1066,653 @@ func dfs(root *TreeNode, res *int) int {
    *res = max(*res, left+right+root.Val)  
    return max(left, right) + root.Val  
 }  
+  
+```
+
+java
+
+```java
+class Solution {  
+    int res;  
+  
+    public int maxPathSum(TreeNode root) {  
+        res = Integer.MIN_VALUE;  
+        dfs(root);  
+        return res;  
+    }  
+  
+    int dfs(TreeNode root) {  
+        if (root == null) return 0;  
+        int left = Math.max(0, dfs(root.left));  
+        int right = Math.max(0, dfs(root.right));  
+        res = Math.max(res, left + right + root.val);  
+        return Math.max(left, right) + root.val;  
+    }  
+}
+```
+
+#### 129. Sum Root to Leaf Numbers
+
+java
+
+```java
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        return dfs(root, 0);
+    }
+
+    int dfs(TreeNode root, int res) {
+        if (root == null) return 0;
+        res = 10 * res + root.val;
+        if (root.left == null && root.right == null) return res;
+        return dfs(root.left, res) + dfs(root.right, res);
+    }
+}
+```
+
+
+#### 199. Binary Tree Right Side View
+
+Go
+
+```go
+func rightSideView(root *TreeNode) []int {
+   res := make([]int, 0)
+   dfs(root, 0, &res)
+   return res
+}
+func dfs(root *TreeNode, level int, res *[]int) {
+   if root == nil {
+      return
+   }
+   if len(*res) == level {
+      *res = append(*res, root.Val)
+   }
+   dfs(root.Right, level+1, res)
+   dfs(root.Left, level+1, res)
+}
+```
+
+#### 222. Count Complete Tree Nodes
+
+go
+
+```go
+func countNodes(root *TreeNode) int {
+    if root == nil {
+        return 0
+    }
+    return countNodes(root.Left) + countNodes(root.Right) + 1
+}
+```
+
+#### 226. Invert Binary Tree
+
+二叉树镜像翻转
+
+java
+
+```java
+class Solution {  
+    public TreeNode invertTree(TreeNode root) {  
+        if (root != null) {  
+            TreeNode tmp = root.right;  
+            root.right = invertTree(root.left);  
+            root.left = invertTree(tmp);  
+        }  
+        return root;  
+    }  
+}
+```
+
+python
+
+```python
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root:
+            root.left, root.right = self.invertTree(root.right),self.invertTree(root.left)
+        return root
+```
+
+go
+
+```go
+func invertTree(root *TreeNode) *TreeNode {
+    if root != nil {
+        root.Left, root.Right = invertTree(root.Right), invertTree(root.Left)
+    }
+    return root
+}
+```
+
+#### 230. Kth Smallest Element in a BST
+
+Go
+
+```go
+func kthSmallest(root *TreeNode, k int) int {
+	res, count := 0, 0
+	dfs(root, &res, &count, k)
+	return res
+}
+func dfs(root *TreeNode, res *int, count *int, k int) {
+	if root == nil {
+		return
+	}
+	dfs(root.Left, res, count, k)
+	*count++
+	if *count == k {
+		*res = root.Val
+		return
+	}
+	dfs(root.Right, res, count, k)
+}
+```
+
+#### 235. Lowest Common Ancestor of a Binary Search Tree
+
+go
+
+```go
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+    if p.Val < root.Val && q.Val < root.Val {
+        return lowestCommonAncestor(root.Left,p,q)
+    }
+    if p.Val > root.Val && q.Val > root.Val {
+        return lowestCommonAncestor(root.Right,p,q)
+    }
+    return root
+}
+```
+
+#### 236. Lowest Common Ancestor of a Binary Tree
+
+寻找最低的公共父节点
+
+go
+
+```go
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+    if root == nil || root == p || root == q {
+        return root
+    }
+    lc := lowestCommonAncestor(root.Left, p, q)
+    rc := lowestCommonAncestor(root.Right, p, q)
+    if lc == nil {
+        return rc
+    }
+    if rc == nil {
+        return lc
+    }
+    return root
+}
+```
+
+python
+
+```python
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if root in (None, p, q):
+            return root
+        lc = self.lowestCommonAncestor(root.left, p, q)
+        rc = self.lowestCommonAncestor(root.right, p, q)
+        if not lc:
+            return rc
+        if not rc:
+            return lc
+        return root
+```
+
+#### 257. Binary Tree Paths
+
+```go
+func binaryTreePaths(root *TreeNode) []string {
+	var res []string
+	dfs(root, &res, []string{})
+	return res
+}
+func dfs(root *TreeNode, res *[]string, path []string) {
+	if root == nil {
+		return
+	}
+	path = append(path, strconv.Itoa(root.Val))
+	if root.Left == nil && root.Right == nil {
+		*res = append(*res, strings.Join(path, "->"))
+	}
+	dfs(root.Left, res, path)
+	dfs(root.Right, res, path)
+}
+
+```
+
+java
+
+```java
+class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+        ArrayList<String> res = new ArrayList<>();
+        dfs(root, res, new ArrayList<>());
+        return res;
+    }
+
+    void dfs(TreeNode root, ArrayList<String> res, ArrayList<String> path) {
+        if (root == null) return;
+        path.add(String.valueOf(root.val));
+        if (root.left == null && root.right == null) res.add(String.join("->", path));
+        dfs(root.left, res, path);
+        dfs(root.right, res, path);
+        path.remove(path.size() - 1);
+    }
+}
+```
+
+python
+
+```python
+class Solution:  
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:  
+        res = []  
+        self.dfs(root, [], res)  
+        return res  
+  
+    def dfs(self, root: Optional[TreeNode], path: List[str], res: List[str]):  
+        if not root:  
+            return  
+        v = str(root.val)  
+        path.append(v)  
+        if not root.left and not root.right:  
+            res.append("->".join(path))  
+        self.dfs(root.left, path, res)  
+        self.dfs(root.right, path, res)  
+        path.pop()
+```
+
+#### 297. Serialize and Deserialize Binary Tree
+
+中序方式会有歧义，以下展示先序方式
+
+Go
+
+```go
+type Codec struct{}
+
+func Constructor() (_ Codec) {
+	return
+}
+
+// Serializes a tree to a single string.
+func (*Codec) serialize(root *TreeNode) string {
+	var res []string
+	var dfs func(root *TreeNode)
+	dfs = func(root *TreeNode) {
+		if root == nil {
+			res = append(res, "#")
+			return
+		}
+		res = append(res, strconv.Itoa(root.Val))
+		dfs(root.Left)
+		dfs(root.Right)
+	}
+	dfs(root)
+	return strings.Join(res, ",")
+}
+
+// Deserializes your encoded data to tree.
+func (*Codec) deserialize(data string) *TreeNode {
+	arr := strings.Split(data, ",")
+	var dfs func() *TreeNode
+	dfs = func() *TreeNode {
+		token := arr[0]
+		arr = arr[1:]
+		if token == "#" {
+			return nil
+		}
+		v, _ := strconv.Atoi(token)
+		return &TreeNode{v, dfs(), dfs()}
+	}
+	return dfs()
+}
+```
+
+java
+
+```java
+class Codec {
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        List<String> res = new ArrayList<>();
+        buildString(root, res);
+        return String.join(",", res);
+    }
+
+    private void buildString(TreeNode node, List<String> res) {
+        if (node == null) {
+            res.add("#");
+            return;
+        }
+        res.add(String.valueOf(node.val));
+        buildString(node.left, res);
+        buildString(node.right, res);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        ArrayDeque<String> nodes = new ArrayDeque<>(List.of(data.split(",")));
+        return buildTree(nodes);
+    }
+
+    private TreeNode buildTree(ArrayDeque<String> nodes) {
+        String val = nodes.poll();
+        if (val.equals("#")) return null;
+        return new TreeNode(Integer.parseInt(val), buildTree(nodes), buildTree(nodes));
+    }
+}
+```
+
+#### 331. Verify Preorder Serialization of a Binary Tree
+
+go
+
+https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/discuss/78551/7-lines-Easy-Java-Solution
+
+```go
+func isValidSerialization(preorder string) bool {  
+   nodes := strings.Split(preorder, ",")  
+   diff := 1  
+   for _, node := range nodes {  
+      diff--  
+      if diff < 0 {  
+         return false  
+      }  
+      if node != "#" {  
+         diff += 2  
+      }  
+   }  
+   return diff == 0  
+}
+```
+
+go
+
+https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/discuss/78722/Straight-forward-C%2B%2B-solution-with-explanation
+
+```go
+func isValidSerialization(s string) bool {  
+   nodes := strings.Split(s, ",")  
+   nodeCnt, nilCnt := 0, 0  
+   for i, node := range nodes {  
+      if node == "#" {  
+         nilCnt++  
+      } else {  
+         nodeCnt++  
+      }  
+      if nilCnt >= nodeCnt+1 && i < len(nodes)-1 {  
+         return false  
+      }  
+   }  
+   return nilCnt == nodeCnt+1  
+}
+```
+
+
+#### 404. Sum of Left Leaves
+
+Go
+
+```go
+func sumOfLeftLeaves(root *TreeNode) int {
+   if root == nil {
+      return 0
+   }
+   left := sumOfLeftLeaves(root.Left)
+   right := sumOfLeftLeaves(root.Right)
+   res := 0
+   if root.Left != nil && root.Left.Left == nil && root.Left.Right == nil {
+      res = root.Left.Val
+   }
+   return res + left + right
+}
+```
+#### 430. Flatten a Multilevel Doubly Linked List
+
+java
+
+```java
+class Solution {
+    public Node flatten(Node head) {
+        return flatten(head, null);
+    }
+
+    public Node flatten(Node head, Node rest) {
+        if (head == null) {
+            return rest;
+        }
+        head.next = flatten(head.child, flatten(head.next, rest));
+        if (head.next != null) {
+            head.next.prev = head;
+        }
+        head.child = null;
+        return head;
+    }
+}
+```
+#### 437. Path Sum III
+
+go
+
+```go
+func pathSum(root *TreeNode, target int) int {  
+   hashMap := map[int]int{0: 1}  
+   return dfs(root, target, 0, hashMap)  
+}  
+func dfs(root *TreeNode, target, sum int, hashMap map[int]int) int {  
+   if root == nil {  
+      return 0  
+   }  
+   sum += root.Val  
+   count := 0  
+   if _, ok := hashMap[sum-target]; ok {  
+      count = hashMap[sum-target]  
+   }  
+   hashMap[sum]++  
+   count += dfs(root.Left, target, sum, hashMap)  
+   count += dfs(root.Right, target, sum, hashMap)  
+   hashMap[sum]--  
+   return count  
+}
+```
+
+java
+
+```java
+class Solution {  
+    public int pathSum(TreeNode root, int target) {  
+        HashMap<Long, Integer> hashMap = new HashMap<>();  
+        hashMap.put(0L, 1);  
+        return dfs(root, target, 0, hashMap);  
+    }  
+  
+    private int dfs(TreeNode root, int target, long sum, HashMap<Long, Integer> hashMap) {  
+        if (root == null) {  
+            return 0;  
+        }  
+        sum += root.val;  
+        int count = hashMap.getOrDefault(sum - target, 0);  
+        hashMap.put(sum, hashMap.getOrDefault(sum, 0) + 1);  
+        count += dfs(root.left, target, sum, hashMap);  
+        count += dfs(root.right, target, sum, hashMap);  
+        hashMap.put(sum, hashMap.get(sum) - 1);  
+        return count;  
+    }  
+}
+```
+
+#### 450. Delete Node in a BST
+
+https://leetcode.com/problems/delete-node-in-a-bst/discuss/821420/Python-O(h)-solution-explained
+
+Go
+
+```go
+func deleteNode(root *TreeNode, key int) *TreeNode {
+   if root == nil {
+      return nil
+   }
+   switch {
+   case root.Val < key:
+      root.Right = deleteNode(root.Right, key)
+   case root.Val > key:
+      root.Left = deleteNode(root.Left, key)
+   default:
+      if root.Left == nil {
+         return root.Right
+      }
+      if root.Right == nil {
+         return root.Left
+      }
+      tmp := root.Right
+      for tmp.Left != nil {
+         tmp = tmp.Left
+      }
+      root.Val = tmp.Val
+      root.Right = deleteNode(root.Right, root.Val)
+   }
+   return root
+}
+```
+
+
+#### 501. Find Mode in Binary Search Tree
+
+```go
+func findMode(root *TreeNode) []int {
+   count, maxCount := 0, 0
+   var (
+      prev *TreeNode
+      res  []int
+   )
+   
+   var dfs func(root *TreeNode)
+   dfs = func(root *TreeNode) {
+      if root == nil {
+         return
+      }
+      dfs(root.Left)
+      if prev == nil || root.Val != prev.Val {
+         count = 1
+      } else {
+         count++
+      }
+      if count == maxCount {
+         res = append(res, root.Val)
+      }
+      if count > maxCount {
+         maxCount = count
+         res = append([]int{}, root.Val)
+      }
+      prev = root
+      dfs(root.Right)
+   }
+   
+   dfs(root)
+   return res
+}
+```
+
+
+#### 530. Minimum Absolute Difference in BST
+
+https://leetcode.com/problems/minimum-absolute-difference-in-bst/solutions/99905/two-solutions-in-order-traversal-and-a-more-general-way-using-treeset/
+
+```go
+func getMinimumDifference(root *TreeNode) int {
+   res := math.MaxInt32
+   var prev *TreeNode
+   var dfs func(root *TreeNode)
+   dfs = func(root *TreeNode) {
+      if root == nil {
+         return
+      }
+      dfs(root.Left)
+      if prev != nil && root.Val-prev.Val < res {
+         res = root.Val - prev.Val
+      }
+      prev = root
+      dfs(root.Right)
+   }
+   dfs(root)
+   return res
+}
+```
+
+#### 538. Convert BST to Greater Tree
+
+```go
+func convertBST(root *TreeNode) *TreeNode {
+   var (
+      dfs  func(root *TreeNode)
+      prev *TreeNode
+   )
+   dfs = func(root *TreeNode) {
+      if root == nil {
+         return
+      }
+      dfs(root.Right)
+      if prev != nil {
+         root.Val += prev.Val
+      }
+      prev = root
+      dfs(root.Left)
+   }
+   dfs(root)
+   return root
+}
+```
+
+#### 543. Diameter of Binary Tree
+
+java
+
+```java
+public class Solution {  
+    int res;  
+  
+    public int diameterOfBinaryTree(TreeNode root) {  
+        res = 0;  
+        dfs(root);  
+        return res;  
+    }  
+  
+    int dfs(TreeNode root) {  
+        if (root == null) return 0;  
+        int left = dfs(root.left);  
+        int right = dfs(root.right);  
+        res = Math.max(res, left + right);  
+        return 1 + Math.max(left, right);  
+    }  
+}
+```
+
+go
+
+```go
+func diameterOfBinaryTree(root *TreeNode) int {
+	res := 0
+	dfs(root, &res)
+	return res
+}
+func dfs(root *TreeNode, res *int) int {
+	if root == nil {
+		return 0
+	}
+	left := dfs(root.Left, res)
+	right := dfs(root.Right, res)
+	*res = max(*res, left+right)
+	return max(left, right) + 1
+}
+
 ```
 
 #### 559. Maximum Depth of N-ary Tree
@@ -1059,6 +1728,7 @@ func maxDepth(root *Node) int {
     }
     return 1 + res
 }
+
 ```
 
 #### 572. Subtree of Another Tree
@@ -1317,6 +1987,8 @@ class Solution {
 ```
 
 #### 968. Binary Tree Cameras
+
+二叉树遍历方式也就三种，试也该试出来，一个后序遍历不就解决了吗，不要搞那么复杂
 
 Go
 

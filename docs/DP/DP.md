@@ -1,6 +1,6 @@
-Dynamic programming involves caching intermediate results to optimize computation, often requiring a specific evaluation order.
+动态规划就是缓存中间结果来加速计算，对计算顺序有严格的要求
 
-These problems frequently exhibit strict positional dependencies. A common strategy is to construct a DP table and fill it iteratively, following the established logic.
+题目往往有严格位置依赖，解法是画表格填数，毫无语法难度
 
 #### [1162. As Far from Land as Possible](https://leetcode.com/problems/as-far-from-land-as-possible/)
 
@@ -39,7 +39,7 @@ class Solution {
 }
 ```
 
-#### 1035. Uncrossed Lines
+#### 1035. Uncrossed Lines
 
 2D dp
 
@@ -195,7 +195,7 @@ class Solution {
 }
 ```
 
-#### 583. Delete Operation for Two Strings
+#### 583. Delete Operation for Two Strings
 
 Go
 
@@ -279,9 +279,9 @@ func longestPalindrome(s string) string {
 
 #### 10. Regular Expression Matching
 
-**Space Optimization**
+compress
 
-The row being updated must be initialized (or reset) to `false`. Since not every cell in the DP table is visited or updated in each iteration, pre-filling is necessary to prevent state leakage from previous rows.
+需要把要更新的那一行预先涂为false 并不是DP中的每个点都会被loop扫描，更不是每个点都更新
 
 ```go
 func isMatch(s string, p string) bool {
@@ -345,7 +345,7 @@ func longestValidParentheses(s string) int {
 
 #### 44. Wildcard Matching
 
-Space compression
+compres
 
 ```go
 func isMatch(s string, p string) bool {
@@ -376,7 +376,7 @@ func isMatch(s string, p string) bool {
 
 #### 64. Minimum Path Sum
 
-Space compression
+conpress
 
 ```go
 func minPathSum(grid [][]int) int {
@@ -493,7 +493,7 @@ func getRow(n int) []int {
 }
 ```
 
-#### 132. Palindrome Partitioning II
+#### 132. Palindrome Partitioning II
 
 go
 
@@ -573,7 +573,7 @@ func calculateMinimumHP(dungeon [][]int) int {
 
 #### 256. Paint House
 
-Rolling array 
+rollong array 
 
 ```java
 class Solution {
@@ -598,7 +598,7 @@ class Solution {
 
 #### 312. Burst Balloons
 
-Burst the balloon at coordinate k last.
+最后打爆k坐标的气球
 
 go
 
@@ -689,7 +689,7 @@ func longestPalindromeSubseq(s string) int {
 }
 ```
 
-#### 718. Maximum Length of Repeated Subarray
+#### 718. Maximum Length of Repeated Subarray
 
 ```go
 func findLength(nums1 []int, nums2 []int) int {  
@@ -710,7 +710,7 @@ func findLength(nums1 []int, nums2 []int) int {
 }  
 ```
 
-#### 837. New 21 Game
+#### 837. New 21 Game
 
 https://leetcode.com/problems/new-21-game/discuss/132334/One-Pass-DP-O(N)
 
@@ -769,7 +769,7 @@ func lenLongestFibSubseq(arr []int) int {
 }
 ```
 
-#### 877. Stone Game
+#### 877. Stone Game
 
 ```go
 func stoneGame(piles []int) bool {  
@@ -788,7 +788,7 @@ func stoneGame(piles []int) bool {
 }  
 ```
 
-#### 887. Super Egg Drop
+#### 887. Super Egg Drop
 
 https://leetcode.com/problems/super-egg-drop/discuss/158974/C%2B%2BJavaPython-2D-and-1D-DP-O(KlogN)
 
@@ -831,7 +831,7 @@ func maxSubarraySumCircular(nums []int) int {
 }
 ```
 
-#### 935. Knight Dialer
+#### 935. Knight Dialer
 
 Go
 
@@ -907,11 +907,15 @@ func peopleAwareOfSecret(n int, delay int, forget int) int {
 
 #### 1000. Minimum Cost to Merge Stones
 
-...
+有许多堆石头，已知每一堆的重量，规定每次恰好能将连续的`k`堆石头合并为1堆 ，合并的花费为这些石头重量之和，如何计算将所有石头最终合并为1堆的最小花费？最多有30堆石头，如果不能最终合并为1堆，记作-1
 
-The strategy focuses on evaluating the two sub-problems on either side of the final split point.
+java
 
-Each merge operation eliminates $k$ piles and produces 1, effectively reducing the total count by $k-1$ per step. Therefore, it is only possible to merge all stones into a single pile if $(n-1)$ is divisible by $(k-1)$.
+依然是最终处理分界点两端的两块
+
+每次消去k块石头再返回1块，每次其实减少k-1
+
+n-1能否整除k-1标志着最终能否到达1块石头
 
 ```java
 class Solution {
@@ -1034,9 +1038,9 @@ func minDistance(word1 string, word2 string) int {
 
 #### [688. Knight Probability in Chessboard](https://leetcode.com/problems/knight-probability-in-chessboard/)
 
-2D DP
+2D dp
 
-Space compression also applies to this problem. Starting from the 1st layer, the DP only stores data from the previous layer.
+空间压缩在本题也适用，从第1层开始DP，仅保存前一层的数据
 
 java
 
@@ -1072,7 +1076,7 @@ public class Solution {
 
 #### [1269. Number of Ways to Stay in the Same Place After Some Steps](https://leetcode.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/)
 
-Space compression
+space compression
 
 ```java
 class Solution {
@@ -1093,7 +1097,7 @@ class Solution {
 
 #### 377. Combination Sum IV
 
-Different sequences are treated as different combinations. This is an ordered 0/1 knapsack problem.
+顺序不同视作不同的组合 有顺序的01背包
 
 ```go
 func combinationSum4(nums []int, target int) int {
@@ -1244,7 +1248,7 @@ func minStickers(stickers []string, target string) int {
 
 #### 198. House Robber
 
-Space compression
+compress
 
 ```go
 func rob(nums []int) int {  
@@ -1277,7 +1281,7 @@ func dfs(nums []int) int {
 }
 ```
 
-#### 337. House Robber III
+#### 337. House Robber III
 
 ```go
 type profit struct {
@@ -1303,7 +1307,7 @@ func dfs(root *TreeNode) profit {
 
 #### 121. Best Time to Buy and Sell Stock
 
-Only one transaction allowed.
+只能买卖一次
 
 ```go
 func maxProfit(prices []int) int {
@@ -1322,7 +1326,7 @@ func maxProfit(prices []int) int {
 
 #### 122. Best Time to Buy and Sell Stock II
 
-Cannot participate in multiple transactions simultaneously. Unlimited number of transactions allowed.
+不能同时参与多比交易。买卖次数不限
 
 ```go
 func maxProfit(prices []int) int {
@@ -1337,7 +1341,7 @@ func maxProfit(prices []int) int {
 }
 ```
 
-#### 309. Best Time to Buy and Sell Stock with Cooldown
+#### 309. Best Time to Buy and Sell Stock with Cooldown
 
 ```go
 func maxProfit(prices []int) int {  

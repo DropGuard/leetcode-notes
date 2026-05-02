@@ -1,19 +1,19 @@
-Template from Zuoshen: https://github.com/algorithmzuo/algorithmbasic2020/blob/a2e2e76a3901889fc7b4747eca120663fecb1028/src/class15/Code01_FriendCircles.java
+模板来自左神 https://github.com/algorithmzuo/algorithmbasic2020/blob/a2e2e76a3901889fc7b4747eca120663fecb1028/src/class15/Code01_FriendCircles.java
 
-Union Find can solve:
-- Number of connected components (e.g., Number of Islands)
-- Size of the largest connected component (e.g., Max Area of Island)
-- Connectivity between elements
+union find 可以解决：
+- 连通块有几个（岛屿数量）
+- 最大的连通块有多大（岛屿最大面积）
+- 哪些是连通的
 
-The find function is used to find the representative (root) of a set. This template includes an O(1) level optimization (path compression). As the pointer 'i' moves up to the root, a stack records the path. Before returning, all intermediate nodes are pointed directly to the final root, flattening the structure.
+find函数用来找到某一坐标的rank，本模板中做了O(1)层面的优化，在i指针不断向上跳的过程中，用栈保留了滑动轨迹，在返回前，将中间节点的boss全部设置为i指针找到的最终boss，把结构拍平了
 
-The union function merges two sets. The 'group' attribute tracks the number of sets; if union is successful, 'group' is decremented.
+union函数使两个集团的boss决出胜负，group属性描述小团体数量，所以union成功后就减一
 
-The 'size' array is only valid when 'i' is the root (boss).
+size数组只有当i为boss时，size[ i ] 才有效
 
-Union by size (or rank): attach the smaller set to the larger one to minimize the tree height.
+合并时小挂大，减少修改次数
 
-Recursion can be replaced with manual stack management by modifying the find method. This requires initializing a stack.
+可以将递归改为手动压栈，修改find方法即可，需要初始化stack
 
 ```java
 int find(int i) {  
@@ -465,9 +465,9 @@ class UnionFind {
 
 #### 128. Longest Consecutive Sequence
 
-Store element values and their indices in a hash map. For duplicate elements, only store the index once.
+把元素值和坐标存入哈希表，重复元素只需存一次坐标
 
-Consecutive numbers can be treated as connected components. After merging, return the length of the largest component.
+连续的数字可以看作连通块，合并之后返回最大的联通块长度
 
 https://leetcode.com/problems/longest-consecutive-sequence/solutions/166544/union-find-thinking-process/
 
@@ -527,7 +527,7 @@ class UnionFind {
 }
 ```
 
-#### 130. Surrounded Regions
+#### 130. Surrounded Regions
 
 java
 
@@ -602,7 +602,7 @@ class UnionFind {
 
 #### 200. Number of Islands
 
-Given a 0/1 matrix where '1' represents land and '0' represents water, find the number of islands.
+输入01矩阵，1表示陆地，0表示水面，如何求出岛屿数量
 
 go
 
@@ -994,7 +994,7 @@ func (uf *UnionFind) union(i, j int) {
 
 #### 684. Redundant Connection
 
-If two points are already in the same set, return the current edge.
+如果发现两个点已经在一个集合里了就return当前边
 
 java
 
@@ -1045,9 +1045,9 @@ class UnionFind {
 
 #### 685. Redundant Connection II
 
-One case is the presence of a cycle, and another is a node having two in-degrees.
+一种情况是有环，另一种情况是有一个点出现两条入边
 
-Collect the two in-degree edges; if none are found, a cycle must exist.
+可以将两条入边收集起来，如果收集不到说明有环
 
 java
 
@@ -1119,7 +1119,7 @@ class UnionFind {
 
 #### 694.Number of Distinct Islands
 
-testing [https://www.lintcode.com/problem/860/description](https://www.lintcode.com/problem/860/description)
+testing [https://www.lintcode.com/problem/860/description](https://www.lintcode.com/problem/860/description)
 
 java
 
@@ -1191,7 +1191,7 @@ class UnionFind {
 ```
 #### 695. Max Area of Island
 
-The Union Find group count must be initialized with the total number of '1's.
+必须以1的数量初始化union find的group
 
 java
 
@@ -1403,7 +1403,7 @@ class UnionFind {
 
 #### 785. Is Graph Bipartite?
 
-Verify bipartite graph
+验证二分图
 
 java
 
@@ -1462,15 +1462,15 @@ class UnionFind {
 
 #### 803. Bricks Falling When Hit
 
-Solution from GraceMeng: https://leetcode.com/problems/bricks-falling-when-hit/solutions/195781/union-find-logical-thinking/
+解法来自GraceMeng https://leetcode.com/problems/bricks-falling-when-hit/solutions/195781/union-find-logical-thinking/
 
-If a node in 'hits' is hit, mark it as 2.
+hits中的节点如果命中了就涂成2
 
-Union all '1's in the grid and record the size of the connected component attached to the dummy node.
+把图中的1全部union，记录dummy上连通分量的size
 
-Nodes at the top of the grid are connected to the dummy node.
+如果是grid顶部的节点就连到dummy上
 
-Restore 2s to 1s, union again, and record the increased size.
+把2还原成1，再次union，记录增加的size
 
 java
 
@@ -1827,7 +1827,7 @@ class UnionFind {
 
 `0 <= xi, yi <= 10^4`
 
-Merging coordinates is also possible, but the coordinate space is quite large, far exceeding the number of stones. Thus, we use a discrete mapping for storage.
+也可以合并坐标，但坐标的数据量太大了，远超过石子数量，所以用离散的表存储
 
 java
 
@@ -2367,7 +2367,7 @@ class UnionFind {
 
 Kruskal
 
-It would be 5 times slower without using a Priority Queue (PQ).
+不用PQ的话会慢5倍
 
 O(E log E) 
 
@@ -2503,7 +2503,7 @@ class UnionFind {
 
 #### Paper Review
 
-Requires membership: https://www.lintcode.com/problem/1463/description
+需要会员https://www.lintcode.com/problem/1463/description
 
 java
 

@@ -1,14 +1,14 @@
-Refer to Lesson 26 of the 'Zuo Shen' system learning class on matrices and the Fibonacci sequence.
+参考左神体系学习班第26期由斐波那契数列讲述矩
 
 #### 509. Fibonacci Number
 
-The recurrence relation of the Fibonacci sequence is F(n) = F(n - 1) + F(n - 2).
+斐波那契数列的递推关系是F(n) = F(n - 1) + F(n - 2)  
 
-F(0) = 0, F(1) = 1, F(2) = 1, F(3) = 2, f(4) = 3.
+F(0) = 0, F(1) = 1, F(2) = 1, F(3) = 2, f(4) = 3  
 
-Calculate the n-th Fibonacci number F(n).
+请计算出第 n 个斐波那契数F(n)
 
-The recurrence relation can be represented by a matrix:
+递推关系可以用矩阵表示
 
 $$
 \begin{bmatrix} 
@@ -27,11 +27,11 @@ $$
  \end{bmatrix}
 $$
 
-The recurrence relation is strictly invariant. Multiplying F(0) and F(1) by the matrix N times yields F(n-1) and F(n).
+递推关系是严格不变的，F(0) 和 F(1) 乘N次矩阵就等于F(n - 1) 和 F(n)
 
-Multiplying n times, the time complexity is of order O(log(N)).
+连乘n次，时间复杂度为O(log(N))级别
 
-Substituting F(2) = 1, F(3) = 2, f(4) = 3, solve the equations:
+F(2) = 1, F(3) = 2, f(4) = 3代入, 解方程
 
 $$
 \begin{cases}
@@ -39,14 +39,14 @@ $$
 2c+d=2\\
 \end {cases}
 $$
-Substituting F(5) = 5, f(4) = 3, F(3) = 2, solve the equations:
+F(5) = 5, f(4) = 3, F(3) = 2代入, 解方程
 $$
 \begin{cases}
 3a+2b=5\\
 3c+2d=3\\
 \end {cases}
 $$
-Therefore, the base matrix is:
+所以关键矩阵为
 $$
 \begin{bmatrix}
 1&1\\
@@ -138,9 +138,9 @@ class Solution {
 }
 ```
 
-#### 935. Knight Dialer
+#### 935. Knight Dialer
 
-Represent the undirected graph with an adjacency matrix.
+用邻接矩阵表示无向图
 
 https://alexgolec.medium.com/google-interview-questions-deconstructed-the-knights-dialer-impossibly-fast-edition-c288da1685b8
 
@@ -148,7 +148,7 @@ https://leetcode.com/problems/knight-dialer/solutions/189252/o-logn/
 
 Go log(n) Solution
 
-Since it is an undirected graph, the matrix is symmetric along the diagonal from top-left to bottom-right.
+本质是无向图，所以矩阵是沿左上到右下对称的
 
 ```go
 func knightDialer(n int) int {

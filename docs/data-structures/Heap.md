@@ -1,6 +1,6 @@
-If a new element is added, it is appended to the end of the queue and then bubbles up.
+如果是新加入一个元素，就是加到队尾，然后不断上浮
 
-After popping, the last element is moved to the top and then sinks down by comparing with child nodes and swapping with the larger child.
+pop之后把队尾元素拿到顶部然后下沉，比较子节点，与更大的子节点交换
 
 #### 23. Merge k Sorted Lists
 
@@ -33,7 +33,7 @@ class Solution {
 
 #### 215. Kth Largest Element in an Array
 
-For entertainment only; does not meet the O(n) requirement of the problem.
+仅供娱乐，不符合题意的`O(n)`要求
 
 rust
 
@@ -77,13 +77,13 @@ class Solution {
 
 https://leetcode.cn/problems/the-skyline-problem/solutions/873332/you-xian-dui-lie-java-by-liweiwei1419-jdb5/
 
-Equivalent to a range modification and maximum value problem, but the constant time for a segment tree is too large.
+相当于区间修改，求最大值的问题，但是线段树的常数时间太大了
 
-The silhouette of a building can be understood as two events: the appearance of height at the left end and its disappearance at the right end.
+建筑的轮廓可以理解为“左端高度产生”和“右端高度消失”两个事件
 
-Just collect the points where height differences occur; the initial height is 0.
-Sort by x-coordinate; when x-coordinates are the same, the higher height comes first.
-If the height belongs to a left endpoint, add it to the heap; if it belongs to a right endpoint, remove it.
+收集产生高度差的点即可，初始高度为0
+按照横坐标排序，横坐标相同的时候，高度高的在前面
+如果高度属于左端点，就加入堆，右端点就删除
 
 find the critical points that change the max height among the buildings on the left
 
@@ -177,7 +177,7 @@ impl Solution {
 
 #### 239. Sliding Window Maximum
 
-Supports lazy deletion.
+可以懒删除
 
 java
 
@@ -200,7 +200,7 @@ class Solution {
 }
 ```
 
-#### 295. Find Median from Data Stream
+#### 295. Find Median from Data Stream
 
 https://leetcode.com/problems/find-median-from-data-stream/solutions/74047/java-python-two-heap-solution-o-log-n-add-o-1-find/?orderBy=most_votes
 
@@ -282,7 +282,7 @@ class MedianFinder {
 ```
 
 
-#### 347. Top K Frequent Elements
+#### 347. Top K Frequent Elements
 
 java
 
@@ -366,7 +366,7 @@ class Solution {
 }
 ```
 
-#### 407. Trapping Rain Water II
+#### 407. Trapping Rain Water II
 
 java
 
@@ -870,7 +870,7 @@ impl Solution {
 
 prim
 
-Each edge is enqueued and dequeued at most once. n^2 log n
+O(E log E)   所有边最多入队一次出队一次 n^2 log n
 
 java
 
@@ -901,7 +901,7 @@ class Solution {
 
 prim
 
-Scan all edges each time, repeated V times.    n^3
+O(E * V)    每一次都扫描所有边，持续V次    n^3
 
 java
 
@@ -933,7 +933,7 @@ class Solution {
 
 prim
 
-Depends on the number of edges.  O(n^2 * log n)
+O(E log E) 就是和边的数量有关  O(n^2 * log n)
 
 ```java
 class Solution {
@@ -973,3 +973,4 @@ class Solution {
         return res;
     }
 }
+```

@@ -64,7 +64,7 @@ func reverseBits(num uint32) uint32 {
 
 #### 191. Number of 1 Bits
 
-Given an unsigned integer, find the number of '1' bits in its binary representation. 
+一个无符号的数字，求其二进制位上有几个 1 
 
 go
 
@@ -126,7 +126,7 @@ class Solution {
     }  
 }
 ```
-#### 268. Missing Number
+#### 268. Missing Number
 
 array containing `n` distinct numbers in the range `[0, n]` , find the missing one.
 
@@ -141,7 +141,7 @@ func missingNumber(nums []int) int {
 ```
 
 
-#### 289. Game of Life
+#### 289. Game of Life
 
 ```python
 # python
@@ -187,7 +187,9 @@ func gameOfLife(board [][]int) {
          board[i][j] >>= 1  
       }  
    }  
-}
+}  
+  
+
 ```
 
 
@@ -203,7 +205,7 @@ func countBits(n int) []int {
 }
 ```
 
-#### 389. Find the Difference
+#### 389. Find the Difference
 
 Go
 
@@ -218,7 +220,7 @@ func findTheDifference(s string, t string) byte {
 }
 ```
 
-#### 342. Power of Four
+#### 342. Power of Four
 
 ```go
 func isPowerOfFour(n int) bool {  
@@ -226,7 +228,7 @@ func isPowerOfFour(n int) bool {
 }
 ```
 
-#### 371. Sum of Two Integers
+#### 371. Sum of Two Integers
 
 go
 

@@ -36,7 +36,7 @@ class Solution {
     }
 }
 ```
-#### 205. Isomorphic Strings
+#### 205. Isomorphic Strings
 
 Go
 
@@ -98,7 +98,7 @@ func longestConsecutive(nums []int) int {
 
 python
 
-Refer to https://leetcode.com/problems/longest-consecutive-sequence/discuss/41057/Simple-O(n)-with-Explanation-Just-walk-each-streak
+参考https://leetcode.com/problems/longest-consecutive-sequence/discuss/41057/Simple-O(n)-with-Explanation-Just-walk-each-streak
 
 ```python
 class Solution:
@@ -312,7 +312,7 @@ impl Solution {
 }
 ```
 
-#### 219. Contains Duplicate II
+#### 219. Contains Duplicate II
 
 rust
 
@@ -513,7 +513,7 @@ impl Solution {
 }
 ```
 
-#### 290. Word Pattern
+#### 290. Word Pattern
 
 go
 
@@ -593,7 +593,7 @@ class Solution:
                 n1.remove(x)
         return res
 ```
-#### 350. Intersection of Two Arrays II
+#### 350. Intersection of Two Arrays II
 
 go
 
@@ -617,7 +617,7 @@ func intersect(nums1 []int, nums2 []int) []int {
 }
 ```
 
-#### 380. Insert Delete GetRandom O(1)
+#### 380. Insert Delete GetRandom O(1)
 
 https://leetcode.com/problems/insert-delete-getrandom-o1/discuss/85401/Java-solution-using-a-HashMap-and-an-ArrayList-along-with-a-follow-up.-(131-ms)
 
@@ -706,7 +706,7 @@ class RandomizedSet {
 }
 ```
 
-#### 381. Insert Delete GetRandom O(1) - Duplicates allowed
+#### 381. Insert Delete GetRandom O(1) - Duplicates allowed
 
 https://leetcode.com/problems/insert-delete-getrandom-o1/discuss/85401/Java-solution-using-a-HashMap-and-an-ArrayList-along-with-a-follow-up.-(131-ms)
 

@@ -47,7 +47,8 @@ func maxArea(height []int) int {
       res = max(res, lower*(right-left+1))  
    }  
    return res  
-}
+}  
+
 ```
 
 #### 15. 3Sum
@@ -171,7 +172,7 @@ func lengthOfLastWord(s string) int {
 }
 ```
 
-#### 125. Valid Palindrome
+#### 125. Valid Palindrome
 
 Go
 
@@ -263,7 +264,7 @@ func reverse(words []string) {
 
 O(1) space
 
-So ingenious https://leetcode.com/problems/reverse-words-in-a-string/solutions/47720/clean-java-two-pointers-solution-no-trim-no-split-no-stringbuilder/
+太精妙了https://leetcode.com/problems/reverse-words-in-a-string/solutions/47720/clean-java-two-pointers-solution-no-trim-no-split-no-stringbuilder/
 
 ```go
 func reverseWords(s string) string {

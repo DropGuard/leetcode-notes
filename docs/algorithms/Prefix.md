@@ -1,6 +1,6 @@
 #### 53. Maximum Subarray
 
-Contains negative numbers, must start accumulating from nums[0]
+有负数，必须从nums[ 0 ] 开始累加
 
 ```java
 class Solution {  
@@ -195,9 +195,9 @@ func checkSubarraySum(nums []int, k int) bool {
 }
 ```
 
-#### 560. Subarray Sum Equals K
+#### 560. Subarray Sum Equals K
 
-This problem cannot be solved using a standard sliding window.
+本题不能用常规划窗
 
 java
 

@@ -1,6 +1,6 @@
-When checking for attacks, use three integer bitmasks to record the constraints of columns, left diagonals, and right diagonals respectively. Update the diagonal constraints through bitwise operations (left shift/right shift), and bitwise NOT the result to obtain all legal positions for the current row.
+判断攻击时，利用三个整数的位掩码（Bitmask）分别记录列、左对角线、右对角线的限制。通过位运算（左移/右移）更新对角线限制，取反后即可得到当前行所有合法位置。
 
-During recursion, Push the queen's position into `path` and proceed to the next row; during backtracking, Pop it to restore the state.
+递归过程中，将皇后位置压入 `path`，进入下一行；回溯时弹出，恢复状态。
 
 #### 51. N-Queens
 
@@ -199,9 +199,9 @@ class Solution {
 
 #### 52. N-Queens II
 
-When the order of path traversal is not important, we focus more on whether a position has been visited. Since the board side length will not exceed 32, we can use a bitmap to store the set of currently visited paths.
+不关心路径的访问顺序，更关心是否访问，棋盘边长不会超过32，可以用bitmap保存当前访问的路径集合
 
-Find the total number of solutions, rather than the specific configurations. The base case for recursion is when the column mask is full.
+求方案总数，而不是具体方案。递归出口为column mask摆满。
 
 rust
 

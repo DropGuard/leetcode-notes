@@ -201,7 +201,7 @@ func alter(stack *[]int, dp []int, i int, arr []int) {
 
 #### 42. Trapping Rain Water
 
-Must find both sides higher than the current point to calculate.
+必须找到两侧都高于自己的才能计算
 
 java
 
@@ -248,14 +248,18 @@ func trap(heights []int) int {
 	}
 	return res
 }
+
 ```
 
-#### 84. Largest Rectangle in Histogram
+#### 84.  Largest Rectangle in Histogram
 
+经典单调栈 为什么弹栈时用的是>= 因为右侧区域是连通的，最终会算对
 
-Maintain a monotonic stack with increasing elements. Compare with the top element each time (if it exists).
+维护单调栈，栈内元素递增，每次比较栈顶元素（如果有）
 
-If the top element is larger, pop it; this means the current element is the first element to the right that is smaller than the top element.
+如果栈顶元素更大，就pop掉，找到了栈顶元素右侧的矮子
+
+如果此时依然有栈顶元素，说明栈顶元素更矮，说明找到了当前元素左侧的矮子
 
 java
 
@@ -315,6 +319,7 @@ func largestRectangleArea(heights []int) int {
 	}
 	return res
 }
+
 ```
 
 python
@@ -337,9 +342,15 @@ class Solution:
         return res
 ```
 
- #### 85. Maximal Rectangle
+#### 85. Maximal Rectangle
 
+在只包含0、1的矩阵中找出只包含1的最大矩形
 
+用一维滚动数组逐层计算：只要矩阵为0就更新为0，矩阵为1就累加1
+
+算完一层之后调用84题的函数计算直方图中的最大矩形
+
+go
 
 ```go
 func maximalRectangle(matrix [][]byte) (res int) {  
@@ -384,9 +395,12 @@ func largestRectangleArea(heights []int) int {
 	}
 	return res
 }
+
 ```
 
 #### 316. Remove Duplicate Letters
+
+如果栈顶元素的字典序更大，且栈顶元素在后面仍出现过，就pop掉
 
 go
 
@@ -531,7 +545,7 @@ func greater(nums1 []int, i int, nums2 []int, j int) bool {
 }
 ```
 
- #### 402. Remove K Digits
+#### 402. Remove K Digits
 
 java
 
@@ -613,7 +627,7 @@ func removeKdigits(num string, k int) string {
 }
 ```
 
- #### 456. 132 Pattern
+#### 456. 132 Pattern
 
 go
 
@@ -675,7 +689,7 @@ class Solution:
         return False
 ```
 
- #### 503. Next Greater Element II
+#### 503. Next Greater Element II
 
 go
 
@@ -793,13 +807,21 @@ class Solution {
 }
 ```
 
- #### 1504. Count Submatrices With All Ones
+#### 1504. Count Submatrices With All Ones
 
+在0、1的矩阵中找出只包含1的矩形的数量
 
+主函数用一维滚动数组逐层计算：只要矩阵为0就更新为0，矩阵为1就累加1
 
-Then for each column, set it as the right boundary (inclusive) and count the number of rectangles. Summing these up gives the total for one row.
+把每一行转化为直方图，这就定死了底边
 
-With two sides fixed, the number of rectangles is the number of possible positions for one of the vertices.
+然后对每一列，定为右边界（包含），统计矩形数量，末了加起来就是一行的总量
+
+已经定了两条边，矩形的数量就是某一顶点能够待的位置数量
+
+找出左边的矮子，dp[ i ]在矮子的面积上累加
+
+如果没有左边的矮子，那矩形的数量就是宽 X 高
 
 go
 

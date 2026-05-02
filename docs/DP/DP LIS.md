@@ -181,7 +181,7 @@ impl Solution {
 }
 ```
 
-#### 673. Number of Longest Increasing Subsequence
+#### 673. Number of Longest Increasing Subsequence
 
 ```go
 func findNumberOfLIS(nums []int) int {
